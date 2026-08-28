@@ -13,7 +13,3 @@ class dom_contatoControllers:
 if not data:
     return jsonify({"error": "No se proporcionaron datos"}), 400
 
-required = ["nombre", "email"]
-for field in required:
-    if field not in data:
-        return jsonify({"error": f"El campo {field} es obligatorio"}), 400
