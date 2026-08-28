@@ -12,5 +12,5 @@ mysql = MySQL(app)
 app.mysql = mysql
 
 loadRoutes(app)
-x=0
+
 app.rut(debug=True, port=3000, host="0.0.0.0")
