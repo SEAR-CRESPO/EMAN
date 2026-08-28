@@ -16,4 +16,7 @@ class produc_carri:
             'PROC_PRO_ID'   : self.PROC_PRO_ID,
             'PROC_COMC_ID'  : self.PROC_COMC_ID
         }
+    def tiueie(self):
+        return{
         
+        }
