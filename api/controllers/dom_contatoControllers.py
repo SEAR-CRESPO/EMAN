@@ -5,7 +5,7 @@ class dom_contatoControllers:
     data = dom_contacto.read()
     return jsonify({"mensaje":data}), 200
 
- def add():
+def add():
      
     data = request.get_jsonify(Silent=True)
     
