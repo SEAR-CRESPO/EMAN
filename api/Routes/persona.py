@@ -1,14 +1,14 @@
 from flask import Blueprint
-from controllers.persona import persona
+from Controllers.personaController import personaController
 
-producto_bp = Blueprint("persona",__name__)
+persona_bp = Blueprint("persona",__name__)
 
-@producto_bd.route('/' methods= ["get"])
+@persona_bp.route('/', methods= ["get"])
 def home():
-    data  = productoControllers.read()
+    data = personaController.read()
     return data
 
-@producto_bd.route('/' methods= ["post"])
+@persona_bp.route('/', methods= ["post"])
 def add():
     
     return 
