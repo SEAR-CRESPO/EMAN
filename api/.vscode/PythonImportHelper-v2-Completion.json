@@ -1,0 +1,668 @@
+[
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "domicilio",
+        "importPath": "models.domicilio",
+        "description": "models.domicilio",
+        "isExtraImport": true,
+        "detail": "models.domicilio",
+        "documentation": {}
+    },
+    {
+        "label": "dom_contacto",
+        "importPath": "models.dom_contato",
+        "description": "models.dom_contato",
+        "isExtraImport": true,
+        "detail": "models.dom_contato",
+        "documentation": {}
+    },
+    {
+        "label": "pago",
+        "importPath": "models.pago",
+        "description": "models.pago",
+        "isExtraImport": true,
+        "detail": "models.pago",
+        "documentation": {}
+    },
+    {
+        "label": "persona",
+        "importPath": "models.persona",
+        "description": "models.persona",
+        "isExtraImport": true,
+        "detail": "models.persona",
+        "documentation": {}
+    },
+    {
+        "label": "per_contacto",
+        "importPath": "models.per_contacto",
+        "description": "models.per_contacto",
+        "isExtraImport": true,
+        "detail": "models.per_contacto",
+        "documentation": {}
+    },
+    {
+        "label": "proct_compr",
+        "importPath": "models.proct_compr",
+        "description": "models.proct_compr",
+        "isExtraImport": true,
+        "detail": "models.proct_compr",
+        "documentation": {}
+    },
+    {
+        "label": "producto",
+        "importPath": "models.producto",
+        "description": "models.producto",
+        "isExtraImport": true,
+        "detail": "models.producto",
+        "documentation": {}
+    },
+    {
+        "label": "producto",
+        "importPath": "models.producto",
+        "description": "models.producto",
+        "isExtraImport": true,
+        "detail": "models.producto",
+        "documentation": {}
+    },
+    {
+        "label": "produc_carri",
+        "importPath": "models.produc_carri",
+        "description": "models.produc_carri",
+        "isExtraImport": true,
+        "detail": "models.produc_carri",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_genero",
+        "importPath": "models.tipo_genero",
+        "description": "models.tipo_genero",
+        "isExtraImport": true,
+        "detail": "models.tipo_genero",
+        "documentation": {}
+    },
+    {
+        "label": "ubicacion",
+        "importPath": "models.ubicacion",
+        "description": "models.ubicacion",
+        "isExtraImport": true,
+        "detail": "models.ubicacion",
+        "documentation": {}
+    },
+    {
+        "label": "persona",
+        "importPath": "controllers.persona",
+        "description": "controllers.persona",
+        "isExtraImport": true,
+        "detail": "controllers.persona",
+        "documentation": {}
+    },
+    {
+        "label": "producto",
+        "importPath": "controllers.producto",
+        "description": "controllers.producto",
+        "isExtraImport": true,
+        "detail": "controllers.producto",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "domiciolioControllers",
+        "kind": 6,
+        "importPath": "controllers.domicilioControllers",
+        "description": "controllers.domicilioControllers",
+        "peekOfCode": "class domiciolioControllers:\n    data = domicilio.read()\n    return jsonify({\"mensaje\":data}), 200\n    def add():\n        data = request.get_json(silent=True)\n        if not data:\n            return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n        required = [\"DOM_ID\", \"DOM_UUID\", \"DOM_CODIGO\", \"DOM_COM_ID\"]\n        falt = [ x for x in required if x not in data]\n        if len(falt) > 0:",
+        "detail": "controllers.domicilioControllers",
+        "documentation": {}
+    },
+    {
+        "label": "dom_contatoControllers",
+        "kind": 6,
+        "importPath": "controllers.dom_contatoControllers",
+        "description": "controllers.dom_contatoControllers",
+        "peekOfCode": "class dom_contatoControllers:\n    data = dom_contacto.read()\n    return jsonify({\"mensaje\":data}), 200\n    def add():\n        data = request.get_jsonify(Silent=True)\n        if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    request =[\"CON_ID\", \"CON_UUID\", \"CON_TIPO_CONTACTO\", \"CON_VALOR\", \"CON_DOM_ID\"]\nfalt = [ x for x in request if x not in data]\nif len(falt) > 0:",
+        "detail": "controllers.dom_contatoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "falt",
+        "kind": 5,
+        "importPath": "controllers.dom_contatoControllers",
+        "description": "controllers.dom_contatoControllers",
+        "peekOfCode": "falt = [ x for x in request if x not in data]\nif len(falt) > 0:\n    return jsonify({\"error\": \"Faltan datos\", \"faltantes\": falt}), 400\nx = dom_contacto.add(data)\nreturn x",
+        "detail": "controllers.dom_contatoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "controllers.dom_contatoControllers",
+        "description": "controllers.dom_contatoControllers",
+        "peekOfCode": "x = dom_contacto.add(data)\nreturn x",
+        "detail": "controllers.dom_contatoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "pagoControllers",
+        "kind": 6,
+        "importPath": "controllers.pagoControllers",
+        "description": "controllers.pagoControllers",
+        "peekOfCode": "class pagoControllers:\n    data = pago.read()\n    return jsonify({\"mensaje\":data}), 200\ndef add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.pagoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "controllers.pagoControllers",
+        "description": "controllers.pagoControllers",
+        "peekOfCode": "def add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.pagoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "personaControllers",
+        "kind": 6,
+        "importPath": "controllers.personaControllers",
+        "description": "controllers.personaControllers",
+        "peekOfCode": "class personaControllers:\n    data = persona.read()\n    return jsonify({\"mesanje\":data}), 200\ndef add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.personaControllers",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "controllers.personaControllers",
+        "description": "controllers.personaControllers",
+        "peekOfCode": "def add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.personaControllers",
+        "documentation": {}
+    },
+    {
+        "label": "per_contactoControllers",
+        "kind": 6,
+        "importPath": "controllers.per_contactoControllers",
+        "description": "controllers.per_contactoControllers",
+        "peekOfCode": "class per_contactoControllers:\n    data = per_contacto.read()\n    return jsonify({\"mesaje\":data}), 200\ndef add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.per_contactoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "controllers.per_contactoControllers",
+        "description": "controllers.per_contactoControllers",
+        "peekOfCode": "def add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.per_contactoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "proct_comprtControllers",
+        "kind": 6,
+        "importPath": "controllers.proct_comprControllers",
+        "description": "controllers.proct_comprControllers",
+        "peekOfCode": "class proct_comprtControllers:\n     data = proct_compr.read()\n    return jsonify({\"mensaje\":data}), 200\ndef add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.proct_comprControllers",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "controllers.proct_comprControllers",
+        "description": "controllers.proct_comprControllers",
+        "peekOfCode": "def add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.proct_comprControllers",
+        "documentation": {}
+    },
+    {
+        "label": "productoControllers",
+        "kind": 6,
+        "importPath": "controllers.productoControllers",
+        "description": "controllers.productoControllers",
+        "peekOfCode": "class productoControllers:\n    data = producto.read()\n    return jsonify({\"mensaje\":data}), 200\ndef add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.productoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "controllers.productoControllers",
+        "description": "controllers.productoControllers",
+        "peekOfCode": "def add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.productoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "produc_carriControllers",
+        "kind": 6,
+        "importPath": "controllers.produc_carriControllers",
+        "description": "controllers.produc_carriControllers",
+        "peekOfCode": "class produc_carriControllers:\n    data = produc_carri.read()\n    return jsonify({\"mensaje\":data}), 200\ndef add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.produc_carriControllers",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "controllers.produc_carriControllers",
+        "description": "controllers.produc_carriControllers",
+        "peekOfCode": "def add():\n    data = request.get_json(silent=True)\n    if not data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    required = [\"\"]",
+        "detail": "controllers.produc_carriControllers",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_generoControllers",
+        "kind": 6,
+        "importPath": "controllers.tipo_generoControllers",
+        "description": "controllers.tipo_generoControllers",
+        "peekOfCode": "class tipo_generoControllers:\n    data = tipo_genero.read()\n    return jsonify({\"mensaje\"}), 200\ndef add",
+        "detail": "controllers.tipo_generoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "ad",
+        "kind": 2,
+        "importPath": "controllers.tipo_generoControllers",
+        "description": "controllers.tipo_generoControllers",
+        "peekOfCode": "def add",
+        "detail": "controllers.tipo_generoControllers",
+        "documentation": {}
+    },
+    {
+        "label": "ubicacionControllers",
+        "kind": 6,
+        "importPath": "controllers.ubicacionControllers",
+        "description": "controllers.ubicacionControllers",
+        "peekOfCode": "class ubicacionControllers:\n    def read():\n        data = ubicacion.read()\n        return jsonify({\"mensaje\": data}), 200\n    def add():\n        request_data = request.get_json(silent=True)\n    if not request_data:\n        return jsonify({\"error\": \"No se proporcionaron datos\"}), 400\n    request = [\"ciudad\", \"barrio\", \"direccion\", \"dom_id\"]\n    falt = [ x for x in request if x not in request_data]",
+        "detail": "controllers.ubicacionControllers",
+        "documentation": {}
+    },
+    {
+        "label": "administrador",
+        "kind": 6,
+        "importPath": "models.administrador",
+        "description": "models.administrador",
+        "peekOfCode": "class administrador:\n    def __init__(self, ADM_ID, ADM_UUID, ADM_PER_ID):\n        self.ADM_ID     = ADM_ID\n        self.ADM_UUID   = ADM_UUID\n        self.ADM_PER_ID = ADM_PER_ID\n    def to_dict(self):\n        return{\n            'ADM_ID'     : self.ADM_ID,\n            'ADM_UUID'   : self.ADM_UUID,\n            'ADM_PER_ID' : self.ADM_PER_ID",
+        "detail": "models.administrador",
+        "documentation": {}
+    },
+    {
+        "label": "carrit_compra",
+        "kind": 6,
+        "importPath": "models.carrito_compra",
+        "description": "models.carrito_compra",
+        "peekOfCode": "class carrit_compra:\n    def __init__(self, COMC_ID, COMC_UUID, COMC_CODIGO, COMC_TOTAL_COMPRA, COMC_FECHA):\n        self.COMC_ID           = COMC_ID\n        self.COMC_UUID         = COMC_UUID\n        self.COMC_CODIGO       = COMC_CODIGO\n        self.COMC_TOTAL_COMPRA = COMC_TOTAL_COMPRA\n        self.COMC_FECHA        = COMC_FECHA\n    def to_dict(self):\n        return{\n            'COMC_ID'          : self.COMC_ID,",
+        "detail": "models.carrito_compra",
+        "documentation": {}
+    },
+    {
+        "label": "cliente",
+        "kind": 6,
+        "importPath": "models.cliente",
+        "description": "models.cliente",
+        "peekOfCode": "class cliente:\n    def __init__(self, CLI_ID, CLI_UUID, CLI_PER_ID):\n        self.CLI_ID     = CLI_ID\n        self.CLI_UUID   = CLI_UUID\n        self.CLI_PER_ID = CLI_PER_ID\n    def to_dict(self):\n        return{\n            'CLI_ID'     : self.CLI_ID,\n            'CLI_UUID'   : self.CLI_UUID,\n            'CLI_PER_ID' : self.CLI_PER_ID",
+        "detail": "models.cliente",
+        "documentation": {}
+    },
+    {
+        "label": "compra",
+        "kind": 6,
+        "importPath": "models.compra",
+        "description": "models.compra",
+        "peekOfCode": "class compra:\n    def __init__(self, COM_ID, COM_UUID, COM_NUMERO_COMPRA, COM_METODO_ENTREGA, COM_FECHA_COMPRA, COM_ADM_ID, COM_CLI_ID):\n        self.COM_ID             = COM_ID\n        self.COM_UUID           = COM_UUID\n        self.COM_NUMERO_COMPRA  = COM_NUMERO_COMPRA\n        self.COM_METODO_ENTREGA = COM_METODO_ENTREGA\n        self.COM_FECHA_COMPRA   = COM_FECHA_COMPRA\n        self.COM_ADM_ID         = COM_ADM_ID\n        self.COM_CLI_ID         = COM_CLI_ID\n    def to_dict(self):",
+        "detail": "models.compra",
+        "documentation": {}
+    },
+    {
+        "label": "domicilio",
+        "kind": 6,
+        "importPath": "models.domicilio",
+        "description": "models.domicilio",
+        "peekOfCode": "class domicilio:\n    def __init__(self, DOM_ID, DOM_UUID, DOM_CODIGO, DOM_COM_ID):\n        self.DOM_ID     = DOM_ID\n        self.DOM_UUID   = DOM_UUID\n        self.DOM_CODIGO = DOM_CODIGO\n        self.DOM_COM_ID = DOM_COM_ID   \n    def to_dict(self):\n        return{\n            'DOM_ID'    : self.DOM_ID,\n            'DOM_UUID'  : self.DOM_UUID,",
+        "detail": "models.domicilio",
+        "documentation": {}
+    },
+    {
+        "label": "dom_contacto",
+        "kind": 6,
+        "importPath": "models.dom_contato",
+        "description": "models.dom_contato",
+        "peekOfCode": "class dom_contacto:\n    def __init__(self, CON_ID, CON_UUID, CON_TIPO_CONTACTO, CON_VALOR, CON_DOM_ID):\n        self.CON_ID            = CON_ID\n        self.CON_UUID          = CON_UUID\n        self.CON_TIPO_CONTACTO = CON_TIPO_CONTACTO\n        self.CON_VALOR         = CON_VALOR\n        self.CON_CON_DOM_ID    = CON_DOM_ID\n    def to_dict(self):\n        return{\n            'CON_ID'            : self.CON_ID,",
+        "detail": "models.dom_contato",
+        "documentation": {}
+    },
+    {
+        "label": "pago",
+        "kind": 6,
+        "importPath": "models.pago",
+        "description": "models.pago",
+        "peekOfCode": "class pago:\n    def __init__(self, PAG_ID, PAG_UUID, PAG_NUMERO_PAGO, PAG_VALOR, PAG_METODO, PAG_ESTADO, PAG_FECHA, PAG_COM_ID):\n        self.PAG_ID          = PAG_ID\n        self.PAG_UUID        = PAG_UUID\n        self.PAG_NUMERO_PAGO = PAG_NUMERO_PAGO\n        self.PAG_VALOR       = PAG_VALOR\n        self.PAG_METODO      = PAG_METODO\n        self.PAG_ESTADO      = PAG_ESTADO\n        self.PAG_FECHA       = PAG_FECHA\n        self.PAG_COM_ID      = PAG_COM_ID",
+        "detail": "models.pago",
+        "documentation": {}
+    },
+    {
+        "label": "persona",
+        "kind": 6,
+        "importPath": "models.persona",
+        "description": "models.persona",
+        "peekOfCode": "class persona:\n    def __init__(self, PER_ID, PER_UUID, PER_CONTRASEÑA, PER_NUMERO_DOCUMENTO, PER_PRIMER_NOMBRE, PER_SEGUNDO_NOMBRE, PER_PRIMER_APELLIDO, PER_SEGUNDO_APELLIDO,):\n        self.CAR_ID                   = PER_ID\n        self.CAR_UUID                 = PER_UUID\n        self.PER_CONTRASENA           = PER_CONTRASEÑA\n        self.PER_NUMERO_DOCUMENTO     = PER_NUMERO_DOCUMENTO\n        self.PER_PRIMER_NOMBRE        = PER_PRIMER_NOMBRE\n        self.PER_SEGUNDO_NOMBRE       = PER_SEGUNDO_NOMBRE\n        self.PER_PRIMER_APELLIDO      = PER_PRIMER_APELLIDO\n        self.PER_SEGUNDO_APELLIDO     = PER_SEGUNDO_APELLIDO",
+        "detail": "models.persona",
+        "documentation": {}
+    },
+    {
+        "label": "per_contacto",
+        "kind": 6,
+        "importPath": "models.per_contacto",
+        "description": "models.per_contacto",
+        "peekOfCode": "class per_contacto:\n    def __init__(self, CON_ID, CON_UUID, CON_TIPO_CONTACTO, CON_VALOR, CON_PER_ID ):\n        self.CON_ID            = CON_ID\n        self.CON_UUID          = CON_UUID\n        self.CON_TIPO_CONTACTO = CON_TIPO_CONTACTO\n        self.CON_VALOR         = CON_VALOR\n        self.CON_PER_ID        = CON_PER_ID\n    def to_dict(self):\n        return{\n            'CON_ID'            : self.CON_ID,",
+        "detail": "models.per_contacto",
+        "documentation": {}
+    },
+    {
+        "label": "produ_compr",
+        "kind": 6,
+        "importPath": "models.proct_compr",
+        "description": "models.proct_compr",
+        "peekOfCode": "class produ_compr:\n    def __init__(self, PRCO_ID, PRCO_UUID, PRCO_CANTIDAD, PRCO_COM_ID, PRCO_PRO_ID):\n        self.PRCO_ID          = PRCO_ID\n        self.PRCO_UUID        = PRCO_UUID\n        self.PRCO_CANTIDAD    = PRCO_CANTIDAD\n        self.PRCO_COM_ID      = PRCO_COM_ID\n        self.PRCO_PRO_ID      = PRCO_PRO_ID\n    def to_dict(self):\n        return{\n            'PRCO_ID'      : self.PRCO_ID,",
+        "detail": "models.proct_compr",
+        "documentation": {}
+    },
+    {
+        "label": "producto",
+        "kind": 6,
+        "importPath": "models.producto",
+        "description": "models.producto",
+        "peekOfCode": "class producto:\n    def __init__(self, PRO_ID, PRO_UUID, PRO_CODIGO, PRO_NOMBRE, PRO_TALLA, PRO_MARCA, PRO_DESCRIPCION, PRO_COLOR):\n        self.PRO_ID        = PRO_ID\n        self.PRO_UUID      = PRO_UUID\n        self.PRO_CODIGO    = PRO_CODIGO\n        self.NOMBRE        = PRO_NOMBRE\n        self.TALLA         = PRO_TALLA\n        self.PRO_MARCA     = PRO_MARCA\n        self.PRO_DESCRIPCION = PRO_DESCRIPCION\n        self.PRO_COLOR       = PRO_COLOR",
+        "detail": "models.producto",
+        "documentation": {}
+    },
+    {
+        "label": "produc_carri",
+        "kind": 6,
+        "importPath": "models.produc_carri",
+        "description": "models.produc_carri",
+        "peekOfCode": "class produc_carri:\n    def __init__(self, PROC_ID, PROC_UUID, PROC_CANTIDAD, PROC_PRO_ID, PROC_COMC_ID):\n        self.PROC_ID       = PROC_ID\n        self.PROC_UUID     = PROC_UUID\n        self.PROC_CANTIDAD = PROC_CANTIDAD\n        self.PROC_PRO_ID   = PROC_PRO_ID\n        self.PROC_COMC_ID  = PROC_COMC_ID \n    def to_dict(self):\n        return{\n            'PROC_ID'       : self.PROC_ID,",
+        "detail": "models.produc_carri",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_genero",
+        "kind": 6,
+        "importPath": "models.tipo_genero",
+        "description": "models.tipo_genero",
+        "peekOfCode": "class tipo_genero:\n    def __init__(self, GEN_ID, GEN_UUID, GEN_GENERO, GEN_PRO_ID):\n        self.GEN_ID     = GEN_ID\n        self.GEN_UUID   = GEN_UUID\n        self.GEN_GENERO = GEN_GENERO\n        self.GEN_PRO_ID = GEN_PRO_ID\n    def to_dict(self):\n        return{\n            'GEN_ID'     : self.GEN_ID,\n            'GEN_UUID'   : self.GEN_UUID,",
+        "detail": "models.tipo_genero",
+        "documentation": {}
+    },
+    {
+        "label": "ubicacion",
+        "kind": 6,
+        "importPath": "models.ubicacion",
+        "description": "models.ubicacion",
+        "peekOfCode": "class ubicacion:\n    def __init__(self, UBI_ID, UBI_UUID, UBI_CIUDAD, UBI_BARRIO, UBI_DIRECCION, UBI_DOM_ID):\n        self.UBI_ID        = UBI_ID\n        self.UBI_UUID      = UBI_UUID\n        self.UBI_CIUDAD    = UBI_CIUDAD\n        self.UBI_BARRIO    = UBI_BARRIO\n        self.UBI_DIRECCION = UBI_DIRECCION\n        self.UBI_DOM_ID    = UBI_DOM_ID\n    def to_dict(self):\n        return{",
+        "detail": "models.ubicacion",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "Routes.persona",
+        "description": "Routes.persona",
+        "peekOfCode": "def home():\n    data  = productoControllers.read()\n    return data\n@producto_bd.route('/' methods= [\"post\"])\ndef add():\n    return",
+        "detail": "Routes.persona",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "Routes.persona",
+        "description": "Routes.persona",
+        "peekOfCode": "def add():\n    return",
+        "detail": "Routes.persona",
+        "documentation": {}
+    },
+    {
+        "label": "producto_bp",
+        "kind": 5,
+        "importPath": "Routes.persona",
+        "description": "Routes.persona",
+        "peekOfCode": "producto_bp = Blueprint(\"persona\",__name__)\n@producto_bd.route('/' methods= [\"get\"])\ndef home():\n    data  = productoControllers.read()\n    return data\n@producto_bd.route('/' methods= [\"post\"])\ndef add():\n    return",
+        "detail": "Routes.persona",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "Routes.producto",
+        "description": "Routes.producto",
+        "peekOfCode": "def home():\n    data  = productoControllers.read()\n    return data\n@producto_bd.route('/' methods= [\"post\"])\ndef add():\n    return",
+        "detail": "Routes.producto",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "Routes.producto",
+        "description": "Routes.producto",
+        "peekOfCode": "def add():\n    return",
+        "detail": "Routes.producto",
+        "documentation": {}
+    },
+    {
+        "label": "producto_bp",
+        "kind": 5,
+        "importPath": "Routes.producto",
+        "description": "Routes.producto",
+        "peekOfCode": "producto_bp = Blueprint(\"producto\",__name__)\n@producto_bd.route('/' methods= [\"get\"])\ndef home():\n    data  = productoControllers.read()\n    return data\n@producto_bd.route('/' methods= [\"post\"])\ndef add():\n    return",
+        "detail": "Routes.producto",
+        "documentation": {}
+    },
+    {
+        "label": "productoService",
+        "kind": 6,
+        "importPath": "services.productoService",
+        "description": "services.productoService",
+        "peekOfCode": "class productoService:\n    def add():\n        pass\n    def update():\n        pass\n    def delete():\n        pass\n    def read():\n        pass",
+        "detail": "services.productoService",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 6,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "class config:\n    MYSQL_HOST     =  os.getenv('MYSQL_HOST')\n    MYSQL_USER     =  os.getenv('MYSQL_USER')\n    MYSQL_PASSWORD =  os.getenv('MYSQL_PASSWORD')\n    MYSQL_DB       =  os.getenv('MYSQL_DB')\n    MYSQL_PORT     =  os.getenv('MYSQL_PORT')",
+        "detail": "config",
+        "documentation": {}
+    }
+]
