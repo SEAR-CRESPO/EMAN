@@ -1,24 +1,22 @@
 from flask import jsonify, request
-from models.dom_contato import dom_contato
+from models.cliente import cliente
 
-class dom_contatoControllers:
-    @staticmethod
+class clienteController:
     def read():
-        data = dom_contato.read()
+        data = cliente.read()
         return jsonify({"mensaje": data}), 200
 
-    @staticmethod
     def add():
         data = request.get_json(silent=True)
         
         if not data:
             return jsonify({"error": "No se proporcionaron datos"}), 400
         
-        required = ["CON_ID", "CON_UUID", "CON_TIPO_CONTACTO", "CON_VALOR", "CON_DOM_ID"]
+        required = ["CLI_ID", "CLI_UUID", "CLI_CODIGO", "CLI_NOMBRE", "CLI_APELLIDO", "CLI_EMAIL", "CLI_TELEFONO"]
         falt = [x for x in required if x not in data]
         
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = dom_contato.add(data)
+        x = cliente.add(data)
         return x
