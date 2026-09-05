@@ -1,4 +1,4 @@
-class carrit_compra:
+class carrito_compra:
     def __init__(self, COMC_ID, COMC_UUID, COMC_CODIGO, COMC_TOTAL_COMPRA, COMC_FECHA):
         self.COMC_ID           = COMC_ID
         self.COMC_UUID         = COMC_UUID
