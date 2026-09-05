@@ -32,6 +32,6 @@ class administradorService:
         data = c.fetchall()
         print(data)
 
-        x = [administrador(w[0],w[1],w[2],w[3],w[4],w[5],w[6],w[7]).to_dict() for w in data]
+        x = [administrador(w[0],w[1],w[2]).to_dict() for w in data]
 
         return x
