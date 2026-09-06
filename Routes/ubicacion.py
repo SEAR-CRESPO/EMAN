@@ -1,5 +1,5 @@
 from flask import Blueprint
-from Controllers.ubicacionController import ubicacionController
+from controllers.ubicacionControllers import ubicacionController
 
 ubicacion_bp = Blueprint("ubicacion",__name__)
 

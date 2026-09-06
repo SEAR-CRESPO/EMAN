@@ -1,5 +1,5 @@
 from flask import Blueprint
-from Controllers.pagoController import pagoController
+from controllers.pagoControllers import pagoController
 
 pago_bp = Blueprint("pago",__name__)
 

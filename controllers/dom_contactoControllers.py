@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from models.dom_contato import dom_contato
+from models.dom_contacto import dom_contato
 
 class dom_contatoControllers:
     @staticmethod
