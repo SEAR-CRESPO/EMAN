@@ -1,9 +1,9 @@
 from flask import jsonify, request
-from models.cliente import cliente
+from services.clienteService import clienteService
 
 class clienteController:
     def read():
-        data = cliente.read()
+        data = clienteService.read()
         return jsonify({"mensaje": data}), 200
 
     def add():
@@ -18,5 +18,5 @@ class clienteController:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = cliente.add(data)
+        x = clienteService.add(data)
         return x

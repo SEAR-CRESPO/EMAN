@@ -1,9 +1,9 @@
 from flask import jsonify, request
-from models.per_contacto import per_contacto
+from services.per_contactoService import per_contactoService
 
 class per_contactoControllers:
     def read():
-        data = per_contacto.read()
+        data = per_contactoService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class per_contactoControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = per_contacto.add(data)
+        x = per_contactoService.add(data)
         return x

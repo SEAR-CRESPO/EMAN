@@ -1,9 +1,9 @@
 from flask import jsonify, request 
-from models.produc_carri import produc_carri
+from services.produc_carriService import produc_carriService
 
 class produc_carriControllers:
     def read():
-        data = produc_carri.read()
+        data = produc_carriService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class produc_carriControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = produc_carri.add(data)
+        x = produc_carriService.add(data)
         return x

@@ -1,23 +1,22 @@
 from flask import jsonify, request
-from services.productoService import productoService
+from services.administradorService import administradorService
 
-class productoControllers:
+class administradorController:
     def read():
-        data = productoService.read()
+        data = administradorService.read()
         return jsonify({"mensaje": data}), 200
-    
+
     def add():
         data = request.get_json(silent=True)
         
         if not data:
             return jsonify({"error": "No se proporcionaron datos"}), 400
         
-        required = ["CODIGO", "NOMBRE", "TALLA", "MARCA", "DESCRIPCION", "COLOR"]
-        
+        required = ["ADM_ID", "ADM_UUID", "ADM_PER_ID"]
         falt = [x for x in required if x not in data]
         
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = productoService.add(data)
-        return jsonify({"mensaje": "se registro", "data": x}), 200
+        x = administradorService.add(data)
+        return x

@@ -1,9 +1,9 @@
 from flask import jsonify, request
-from models.pago import pago
+from services.pagoService import pagoService
 
 class pagoControllers:
     def read():
-        data = pago.read()
+        data = pagoService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class pagoControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = pago.add(data)
+        x = pagoService.add(data)
         return x

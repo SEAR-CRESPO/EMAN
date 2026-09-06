@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_mysql import MySQL
+from flask_mysqldb import MySQL
 from config import config
 from Routes import loadRoutes
 

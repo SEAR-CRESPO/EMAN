@@ -1,9 +1,9 @@
 from flask import jsonify, request 
-from models.domicilio import domicilio
+from services.domicilioService import domicilioService 
 
 class domiciolioControllers:
     def read():
-        data = domicilio.read()
+        data = domicilioService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class domiciolioControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = domicilio.add(data)
+        x = domicilioService.add(data)
         return x
