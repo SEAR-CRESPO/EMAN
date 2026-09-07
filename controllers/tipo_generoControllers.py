@@ -1,9 +1,9 @@
 from flask import jsonify, request 
-from models.tipo_genero import tipo_genero
+from services.tipo_generoService import tipo_generoService
 
 class tipo_generoControllers:
     def read():
-        data = tipo_genero.read()
+        data = tipo_generoService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class tipo_generoControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = tipo_genero.add(data)
+        x = tipo_generoService.add(data)
         return x

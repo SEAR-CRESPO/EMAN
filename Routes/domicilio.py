@@ -1,5 +1,5 @@
 from flask import Blueprint
-from Controllers.domicilioController import domicilioController
+from controllers.domicilioControllers import domicilioController
 
 domicilio_bp = Blueprint("domicilio",__name__)
 

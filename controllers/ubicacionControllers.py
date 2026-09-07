@@ -1,9 +1,9 @@
 from flask import jsonify, request 
-from models.ubicacion import ubicacion 
+from services.ubicacionService import ubicacionService
 
 class ubicacionControllers:
     def read():
-        data = ubicacion.read()
+        data = ubicacionService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class ubicacionControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = ubicacion.add(data)
+        x = ubicacionService.add(data)
         return x

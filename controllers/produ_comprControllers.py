@@ -1,9 +1,9 @@
 from flask import jsonify, request 
-from models.proct_compr import proct_compr
+from services.produ_comprService import produ_comprService
 
-class proct_comprControllers:
+class produ_comprControllers:
     def read():
-        data = proct_compr.read()
+        data = produ_comprService.read()
         return jsonify({"mensaje": data}), 200
     
     def add():
@@ -19,5 +19,5 @@ class proct_comprControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = proct_compr.add(data)
+        x = produ_comprService.add(data)
         return x

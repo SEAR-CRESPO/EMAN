@@ -1,5 +1,5 @@
 from flask import Blueprint
-from Controllers.administradorController import administradorController
+from controllers.administradorControllers import administradorController
 
 administrador_bp = Blueprint("administrador",__name__)
 

@@ -1,10 +1,10 @@
 from flask import jsonify, request
-from models.dom_contato import dom_contato
+from services.dom_contactoService import dom_contatoService
 
-class dom_contatoControllers:
+class dom_contactoControllers:
     @staticmethod
     def read():
-        data = dom_contato.read()
+        data = dom_contatoService.read()
         return jsonify({"mensaje": data}), 200
 
     @staticmethod
@@ -20,5 +20,5 @@ class dom_contatoControllers:
         if len(falt) > 0:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
-        x = dom_contato.add(data)
+        x = dom_contatoService.add(data)
         return x
