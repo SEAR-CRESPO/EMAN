@@ -10,5 +10,5 @@ def home():
 
 @administrador_bp.route('/', methods= ["post"])
 def add():
-    
+
     return 

@@ -5,10 +5,11 @@ compra_bp = Blueprint("compra",__name__)
 
 @compra_bp.route('/', methods= ["get"])
 def home():
-    data = compraController.read()
+    data = CompraController.read()
     return data
 
 @compra_bp.route('/', methods= ["post"])
 def add():
+    data = CompraController.create()
     
     return 
