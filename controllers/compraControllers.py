@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from services.compraService import compraService
 
-class compraController:
+class compraControllers:
     def read():
         data = compraService.read()
         return jsonify({"mensaje": data}), 200

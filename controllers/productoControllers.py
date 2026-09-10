@@ -12,7 +12,7 @@ class productoControllers:
         if not data:
             return jsonify({"error": "No se proporcionaron datos"}), 400
         
-        required = ["CODIGO", "NOMBRE", "TALLA", "MARCA", "DESCRIPCION", "COLOR"]
+        required = ["CODIGO", "NOMBRE", "TALLA", "MARCA", "DESCRIPCION", "COLOR", "PRECIO"]
         
         falt = [x for x in required if x not in data]
         
@@ -20,4 +20,4 @@ class productoControllers:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
         x = productoService.add(data)
-        return jsonify({"mensaje": "se registro", "data": x}), 200
+        return jsonify({"mensaje": "se registro", "data": x}), 201

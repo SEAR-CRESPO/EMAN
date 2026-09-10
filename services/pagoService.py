@@ -2,7 +2,7 @@ import uuid
 from flask import current_app
 from models.pago import pago
 
-class productoService:
+class pagoService:
     def add(data):
         uuid_pag = uuid.uuid4()
         c = current_app.mysql.connection.cursor()

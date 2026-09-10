@@ -1,4 +1,14 @@
 flask
 flask-mysqldb
 python-dotenv
-flask-cors
+gunicorn
+mysqlclient
+
+
+# flask: crea aplicaciones web (API REST)
+# flask-mysqldb: carga variable de entorno desde un 
+# archivo .env
+#          .env = environment = variable
+#          de entorno 
+# flask-cors: permite solicitar cors
+# pip install -r requirements.txt
