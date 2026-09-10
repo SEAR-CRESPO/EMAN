@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from services.carrito_compraService import carrito_compraService
 
-class carrito_compraController:
+class carrito_compraControllers:
     def read():
         data = carrito_compraService.read()
         return jsonify({"mensaje": data}), 200

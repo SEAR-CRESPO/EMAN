@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from services.administradorService import administradorService
 
-class administradorController:
+class administradorControllers:
     def read():
         data = administradorService.read()
         return jsonify({"mensaje": data}), 200

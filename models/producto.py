@@ -1,5 +1,5 @@
 class producto:
-    def __init__(self, PRO_ID, PRO_UUID, PRO_CODIGO, PRO_NOMBRE, PRO_TALLA, PRO_MARCA, PRO_DESCRIPCION, PRO_COLOR):
+    def __init__(self, PRO_ID, PRO_UUID, PRO_CODIGO, PRO_NOMBRE, PRO_TALLA, PRO_MARCA, PRO_DESCRIPCION, PRO_COLOR,PRO_PRECIO ):
         self.PRO_ID        = PRO_ID
         self.PRO_UUID      = PRO_UUID
         self.PRO_CODIGO    = PRO_CODIGO
@@ -8,16 +8,18 @@ class producto:
         self.PRO_MARCA     = PRO_MARCA
         self.PRO_DESCRIPCION = PRO_DESCRIPCION
         self.PRO_COLOR       = PRO_COLOR
+        self.PRO_PRECIO      = PRO_PRECIO
 
 
     def to_dict(self):
         return{
-            'PRO_ID'          : self.PRO_UUID,
+            'PRO_ID'          : self.PRO_ID,
             'PRO_UUID'        : self.PRO_UUID,
             'PRO_CODIGO'      : self.PRO_CODIGO,
             'PRO_NOMBRE'      : self.PRO_NOMBRE,
             'PRO_TALLA'       : self.PRO_TALLA,
             'PRO_MARCA'       : self.PRO_MARCA,
             'PRO_DESCRIPCION' : self.PRO_DESCRIPCION,
-            'PRO_COLOR'       : self.PRO_COLOR
+            'PRO_COLOR'       : self.PRO_COLOR,
+            'PRO_PRECIO'      : self.PRO_PRECIO
         }

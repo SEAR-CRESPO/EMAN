@@ -9,9 +9,9 @@ class productoService:
 
         query = """INSERT INTO t_producto
 
-            (PRO_UUID, PRO_CODIGO, PRO_NOMBRE, PRO_TALLA, PRO_MARCA, PRO_DESCRIPCION, PRO_COLOR) VALUES
-            (%s, %s, %s, %s, %s, %s, %s)"""
-        c.execute(query, (uuid_pro, data["CODIGO"], data["NOMBRE"], data["TALLA"], data["MARCA"], data["DESCRIPCION"], data["COLOR"]))
+            (PRO_UUID, PRO_CODIGO, PRO_NOMBRE, PRO_TALLA, PRO_MARCA, PRO_DESCRIPCION, PRO_COLOR, PRO_PRECIO) VALUES
+            (%s, %s, %s, %s, %s, %s, %s,%s)"""
+        c.execute(query, (uuid_pro, data["CODIGO"], data["NOMBRE"], data["TALLA"], data["MARCA"], data["DESCRIPCION"], data["COLOR"], data["PRECIO"]))
 
         current_app.mysql.connection.commit()
 
@@ -19,7 +19,7 @@ class productoService:
         data = {"ID": ID, "UUID": uuid_pro, "CODIGO": data["CODIGO"],
                 "NOMBRE": data["NOMBRE"], "TALLA":data ["TALLA"],
                 "MARCA": data["MARCA"], "DESCRIPCION": data["DESCRIPCION"],
-                "COLOR": data["COLOR"]}
+                "COLOR": data["COLOR"],"PRECIO": data["PRECIO"]}
         return data
 
     def update():
@@ -30,12 +30,12 @@ class productoService:
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_producto"
+        query = "SELECT * FROM  t_producto"
         c.execute(query)
         data = c.fetchall()
         print(data)
 
-        x = [producto(w[0],w[1],w[2],w[3],w[4],w[5],w[6],w[7]).to_dict() for w in data]
+        x = [ producto(w[0],w[1],w[2],w[3],w[4],w[5],w[6],w[7], w[8]).to_dict() for w in data]
 
         return x
     

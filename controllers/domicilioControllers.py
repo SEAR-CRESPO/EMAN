@@ -1,7 +1,7 @@
 from flask import jsonify, request 
 from services.domicilioService import domicilioService 
 
-class domiciolioControllers:
+class domicilioControllers:
     def read():
         data = domicilioService.read()
         return jsonify({"mensaje": data}), 200
