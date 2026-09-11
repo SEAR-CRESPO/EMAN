@@ -20,4 +20,12 @@ class tipo_generoControllers:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
         x = tipo_generoService.add(data)
-        return x
+        return jsonify({"mensaje": "se registro", "data": x}), 201
+
+
+    def delete(uuid):
+        x = tipo_generoService.delate(uuid)
+        if x == 404:
+            return jsonify({"Mensaje":"No se encontro el registro"}), x
+        else:
+            return jsonify({"Mensaje":"Se elimino correctamente"}), x

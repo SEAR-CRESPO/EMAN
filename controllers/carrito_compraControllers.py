@@ -19,4 +19,12 @@ class carrito_compraControllers:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
         x = carrito_compraService.add(data)
-        return x
+        return jsonify({"mensaje": "se registro", "data": x}), 201
+
+
+    def delete(uuid):
+        x = carrito_compraService.delate(uuid)
+        if x == 404:
+            return jsonify({"Mensaje":"No se encontro el registro"}), x
+        else:
+            return jsonify({"Mensaje":"Se elimino correctamente"}), x

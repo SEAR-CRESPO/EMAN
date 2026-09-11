@@ -23,3 +23,4 @@ class producto:
             'PRO_COLOR'       : self.PRO_COLOR,
             'PRO_PRECIO'      : self.PRO_PRECIO
         }
+        

@@ -21,13 +21,23 @@ class clienteService:
 
     def update():
         pass
+    
 
-    def delate():
-        pass
+     # marca la posicion %s
+    def update(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_cliente WHERE CLI_UUID = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_cliente"
+        query = "SELECT * FROM t_cliente"
         c.execute(query)
         data = c.fetchall()
         print(data)

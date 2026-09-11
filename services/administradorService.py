@@ -19,15 +19,26 @@ class administradorService:
         data = {"ID": ID, "UUID": uuid_adm, "PER_ID": data["PER_ID"]}
         return data
 
-    def update():
-        pass
+    
+    # marca la posicion %s
+    def update(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_administrador WHERE ADM_UUID = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
+    
 
     def delate():
         pass
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_administrador"
+        query = "SELECT * FROM t_administrador"
         c.execute(query)
         data = c.fetchall()
         print(data)

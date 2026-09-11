@@ -21,4 +21,12 @@ class dom_contactoControllers:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
         x = dom_contatoService.add(data)
-        return x
+        return jsonify({"mensaje": "se registro", "data": x}), 201
+
+
+    def delete(uuid):
+        x = dom_contatoService.delate(uuid)
+        if x == 404:
+            return jsonify({"Mensaje":"No se encontro el registro"}), x
+        else:
+            return jsonify({"Mensaje":"Se elimino correctamente"}), x

@@ -7,7 +7,7 @@ class dom_contatoService:
         uuid_con = uuid.uuid4()
         c = current_app.mysql.connection.cursor()
 
-        query = """INSERT INTO t_dom_contato
+        query = """INSERT INTO t_dom_contacto
 
             (CON_UUID, CON_TIPO_CONTACTO, CON_VALOR, CON_DOM_ID) VALUES
             (%s, %s, %s, %s)"""
@@ -23,12 +23,22 @@ class dom_contatoService:
     def update():
         pass
 
-    def delate():
-        pass
+     # marca la posicion %s
+    def update(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_dom_contacto WHERE CON_UUID = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
+    
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_dom_contato"
+        query = "SELECT * FROM t_dom_contacto"
         c.execute(query)
         data = c.fetchall()
         print(data)

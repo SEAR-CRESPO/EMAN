@@ -25,8 +25,17 @@ class productoService:
     def update():
         pass
 
-    def delate():
-        pass
+    # marca la posicion %s
+    def update(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_producto WHERE PRO_UUID = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
 
     def read():
         c = current_app.mysql.connection.cursor()
