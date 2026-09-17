@@ -9,14 +9,14 @@ class clienteService:
 
         query = """INSERT INTO t_cliente
 
-            (CLI_UUID, CLI_PER_ID) VALUES
+            (cli_uuid, cli_per_id) VALUES
             (%s, %s)"""
-        c.execute(query, (uuid_cli, data["PER_ID"]))
+        c.execute(query, (uuid_cli, data["CLI_PER_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_cli, "PER_ID": data["PER_ID"]}
+        data = {"ID": ID, "UUID": uuid_cli, "PER_ID": data["CLI_PER_ID"]}
         return data
 
     def update():
@@ -24,9 +24,9 @@ class clienteService:
     
 
      # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
-        query = "DELETE FROM t_cliente WHERE CLI_UUID = %s"
+        query = "DELETE FROM t_cliente WHERE cli_uuid = %s"
         c.execute(query,(uuid,))
         current_app.mysql.connection.commit()
         if c.rowcount == 0:

@@ -8,27 +8,26 @@ class ubicacionService:
         c = current_app.mysql.connection.cursor()
 
         query = """INSERT INTO t_ubicacion
-
-            (UBI_UUID, UBI_CIUDAD, UBI_BARRIO, UBI_DIRECCION, UBI_DOM_ID) VALUES
-            (%s, %s, %s, %s, %s, %s)"""
-        c.execute(query, (uuid_ubi, data["CIUDAD"], data["BARRIO"], data["DIRECCION"], data["DOM_ID"]))
+            (ubi_uuid, ubi_ciudad, ubi_barrio, ubi_direccion, ubi_dom_id) VALUES
+            (%s, %s, %s, %s, %s)"""
+        c.execute(query, (uuid_ubi, data["UBI_CIUDAD"], data["UBI_BARRIO"], data["UBI_DIRECCION"], data["UBI_DOM_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
         data = {"ID": ID, "UUID": uuid_ubi,
-                "CIUDAD": data["CIUDAD"],
-                "BARRIO": data["BARRIO"], "DIRECCION":data ["DIRECCION"],
-                "DOM_ID": data["DOM_ID"] }
+                "CIUDAD": data["UBI_CIUDAD"],
+                "BARRIO": data["UBI_BARRIO"], "DIRECCION":data ["UBI_DIRECCION"],
+                "DOM_ID": data["UBI_DOM_ID"] }
         return data
 
     def update():
         pass
 
     # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
-        query = "DELETE FROM t_ubicacion WHERE UBI_UUID = %s"
+        query = "DELETE FROM t_ubicacion WHERE ubi_uuid = %s"
         c.execute(query,(uuid,))
         current_app.mysql.connection.commit()
         if c.rowcount == 0:

@@ -2,12 +2,13 @@ from flask import Flask
 from flask_mysqldb import MySQL
 from config import config
 from Routes import loadRoutes
+from flask_cors import CORS
 
 app = Flask(__name__)
 
 app.config.from_object(config)
 mysql = MySQL(app)
-
+CORS(app)
 
 app.mysql = mysql
 

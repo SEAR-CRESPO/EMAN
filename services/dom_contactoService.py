@@ -9,24 +9,24 @@ class dom_contatoService:
 
         query = """INSERT INTO t_dom_contacto
 
-            (CON_UUID, CON_TIPO_CONTACTO, CON_VALOR, CON_DOM_ID) VALUES
+            (con_uuid, con_tipo_contacto, con_valor, con_dom_id) VALUES
             (%s, %s, %s, %s)"""
         c.execute(query, (uuid_con, data["CON_TIPO_CONTACTO"], data["CON_VALOR"], data["CON_DOM_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_con, "CON_TIPO_CONTACTO": data["CON_TIPO_CONTACTO"],
-                "CON_VALOR": data["CON_VALOR"], "CON_DOM_ID":data ["CON_DOM_ID"]}
+        data = {"ID": ID, "UUID": uuid_con, "TIPO_CONTACTO": data["CON_TIPO_CONTACTO"],
+                "VALOR": data["CON_VALOR"], "DOM_ID":data ["CON_DOM_ID"]}
         return data
 
     def update():
         pass
 
      # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
-        query = "DELETE FROM t_dom_contacto WHERE CON_UUID = %s"
+        query = "DELETE FROM t_dom_contacto WHERE con_uuid = %s"
         c.execute(query,(uuid,))
         current_app.mysql.connection.commit()
         if c.rowcount == 0:

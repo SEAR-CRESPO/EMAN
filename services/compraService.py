@@ -9,26 +9,26 @@ class compraService:
 
         query = """INSERT INTO t_compra
 
-            (COM_UUID,COM_NUMERO_COMPRA,COM_METODO_ENTREGA,COM_FECHA_COMPRA,COM_ADM_ID,COM_CLI_ID) VALUES
+            (com_uuid,com_numero_compra,com_metodo_entrega,com_fecha_compra,com_adm_id,com_cli_id) VALUES
             (%s, %s, %s, %s, %s, %s)"""
-        c.execute(query, (uuid_com, data["NUMERO_COMPRA"], data["METODO_ENTREGA"], data["FECHA_COMPRA"], data["ADM_ID"], data["CLI_ID"]))
+        c.execute(query, (uuid_com, data["COM_NUMERO_COMPRA"], data["COM_METODO_ENTREGA"], data["COM_FECHA_COMPRA"], data["COM_ADM_ID"], data["CON_ CLI_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
         data = {"ID": ID, "UUID": uuid_com,
-                "NUMERO_COMPRA": data["NUMERO_COMPRA"],
-                "METODO_ENTREGA": data["METODO_ENTREGA"], "FECHA_COMPRA":data ["FECHA_COMPRA"],
-                "ADM_ID": data["ADM_ID"], "CLI_ID": data["CLI_ID"]}
+                "NUMERO_COMPRA": data[" COM_NUMERO_COMPRA"],
+                "METODO_ENTREGA": data["COM_METODO_ENTREGA"], "FECHA_COMPRA":data ["COM_FECHA_COMPRA"],
+                "ADM_ID": data["COM_ADM_ID"], "COM_CLI_ID": data["COM_CLI_ID"]}
         return data
 
     def update():
         pass
 
      # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
-        query = "DELETE FROM t_compra WHERE COM_UUID = %s"
+        query = "DELETE FROM t_compra WHERE com_uuid = %s"
         c.execute(query,(uuid,))
         current_app.mysql.connection.commit()
         if c.rowcount == 0:

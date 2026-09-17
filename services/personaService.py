@@ -6,24 +6,25 @@ class personaService:
     def add(data):
         uuid_per = uuid.uuid4()
         c = current_app.mysql.connection.cursor()
-
+        print(data)
         query = """INSERT INTO t_persona
 
-            (PER_UUID, PER_CONTRASENA, PER_NUMERO_DOCUMENTO, PER_PRIMER_NOMBRE, PER_SEGUNDO_NOMBRE, PER_PRIMER_APELLIDO, PER_SEGUNDO_APELLIDO) VALUES
+            (per_uuid, per_contraseña, per_numero_documento, per_primer_nombre, per_segundo_nombre, per_primer_apellido, per_segundo_apellido) VALUES
             (%s, %s, %s, %s, %s, %s, %s)"""
-        c.execute(query, (uuid_per, data["CONTRASENA"], data["NUMERO_DOCUMENTO"], data["PRIMER_NOMBRE"], data["SEGUNDO_NOMBRE"], data["PRIMER_APELLIDO"], data["SEGUNDO_APELLIDO"]))
+        c.execute(query, (uuid_per, data["PER_CONTRASENA"], data["PER_NUMERO_DOCUMENTO"], data["PER_PRIMER_NOMBRE"], data["PER_SEGUNDO_NOMBRE"],
+                           data["PER_PRIMER_APELLIDO"], data["PER_SEGUNDO_APELLIDO"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_per, "CONTRASENA": data["CONTRASENA"],
-                "NUMERO_DOCUMENTO": data["NUMERO_DOCUMENTO"], "PRIMER_NOMBRE":data ["PRIMER_NOMBRE"],
-                "SEGUNDO_NOMBRE": data["SEGUNDO_NOMBRE"], "PRIMER_APELLIDO": data["PRIMER_APELLIDO"],
-                "SEGUNDO_APELLIDO": data["SEGUNDO_APELLIDO"]}
+        data = {"ID": ID, "UUID": uuid_per, "CONTRASENA": data["PER_CONTRASENA"],
+                "NUMERO_DOCUMENTO": data["PER_NUMERO_DOCUMENTO"], "PRIMER_NOMBRE":data["PER_PRIMER_NOMBRE"],
+                "SEGUNDO_NOMBRE": data["PER_SEGUNDO_NOMBRE"], "PRIMER_APELLIDO": data["PER_PRIMER_APELLIDO"],
+                "SEGUNDO_APELLIDO": data["PER_SEGUNDO_APELLIDO"]}
         return data
 
      # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
         query = "DELETE FROM t_persona WHERE PER_UUID = %s"
         c.execute(query,(uuid,))
@@ -34,7 +35,7 @@ class personaService:
         c.close()
         return 200
 
-    def delate():
+    def update():
         pass
 
     def read():

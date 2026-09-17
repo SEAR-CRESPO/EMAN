@@ -12,7 +12,7 @@ class personaControllers:
         if not data:
             return jsonify({"error": "No se proporcionaron datos"}), 400
         
-        required = ["PER_ID", "PER_UUID", "PER_CONTRASENA", "PER_NUMERO_DOCUMENTO", "PER_PRIMER_NOMBRE", "PER_SEGUNDO_NOMBRE", "PER_PRIMER_APELLIDO", "PER_SEGUNDO_APELLIDO"]
+        required = ["PER_CONTRASENA", "PER_NUMERO_DOCUMENTO", "PER_PRIMER_NOMBRE", "PER_SEGUNDO_NOMBRE", "PER_PRIMER_APELLIDO", "PER_SEGUNDO_APELLIDO"]
         
         falt = [x for x in required if x not in data]
         
@@ -24,7 +24,7 @@ class personaControllers:
 
 
     def delete(uuid):
-        x = personaService.delate(uuid)
+        x = personaService.delete(uuid)
         if x == 404:
             return jsonify({"Mensaje":"No se encontro el registro"}), x
         else:

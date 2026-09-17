@@ -9,24 +9,24 @@ class tipo_generoService:
 
         query = """INSERT INTO t_tipo_genero
 
-            (GEN_UUID, GEN_GENERO, GEN_PRO_ID) VALUES
+            (gen_uuid, gen_genero, gen_pro_id) VALUES
             (%s, %s, %s)"""
-        c.execute(query, (uuid_gen, data["GENERO"], data["PRO_ID"]))
+        c.execute(query, (uuid_gen, data["GEN_GENERO"], data["GEN_PRO_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_gen, "GENERO": data["GENERO"],
-                "PRO_ID": data["PRO_ID"]}
+        data = {"ID": ID, "UUID": uuid_gen, "GENERO": data["GEN_GENERO"],
+                "PRO_ID": data["GENPRO_ID"]}
         return data
 
     def update():
         pass
 
     # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
-        query = "DELETE FROM t_tipo_genero WHERE GEN_UUID = %s"
+        query = "DELETE FROM t_tipo_genero WHERE gen_uuid = %s"
         c.execute(query,(uuid,))
         current_app.mysql.connection.commit()
         if c.rowcount == 0:

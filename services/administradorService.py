@@ -9,21 +9,21 @@ class administradorService:
 
         query = """INSERT INTO t_administrador
 
-            (ADMI_UUID, ADMI_PER_ID) VALUES
+            (admi_uuid, adm_per_id) VALUES
             (%s, %s)"""
-        c.execute(query, (uuid_adm, data["PER_ID"]))
+        c.execute(query, (uuid_adm, data["ADM_PER_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_adm, "PER_ID": data["PER_ID"]}
+        data = {"ID": ID, "UUID": uuid_adm, "PER_ID": data["ADM_PER_ID"]}
         return data
 
     
     # marca la posicion %s
-    def update(uuid):
+    def delete(uuid):
         c = current_app.mysql.connection.cursor()
-        query = "DELETE FROM t_administrador WHERE ADM_UUID = %s"
+        query = "DELETE FROM t_administrador WHERE adm_uuid = %s"
         c.execute(query,(uuid,))
         current_app.mysql.connection.commit()
         if c.rowcount == 0:
@@ -33,7 +33,7 @@ class administradorService:
         return 200
     
 
-    def delate():
+    def update():
         pass
 
     def read():
