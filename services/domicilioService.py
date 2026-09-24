@@ -9,26 +9,35 @@ class domicilioService:
 
         query = """INSERT INTO t_domicilio
 
-            (DOM_UUID, DOM_CODIGO, DOM_COM_ID,) VALUES
+            (dom_uuid, dom_codigo, dom_con_id,) VALUES
             (%s, %s, %s)"""
-        c.execute(query, (uuid_dom, data["CODIGO"], data["COM_ID"] ))
+        c.execute(query, (uuid_dom, data["DOM_CODIGO"], data["DOM_COM_ID"] ))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_dom, "CODIGO": data["CODIGO"],
-                "COM_ID": data["COM_ID"]}
+        data = {"ID": ID, "UUID": uuid_dom, "CODIGO": data["DOM_CODIGO"],
+                "COM_ID": data["DOM_COM_ID"]}
         return data
 
-    def update():
-        pass
+     # marca la posicion %s
+    def delete(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_domicilio WHERE DOM_UUID = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
 
     def delate():
         pass
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_domicilio"
+        query = "SELECT * FROM t_domicilio"
         c.execute(query)
         data = c.fetchall()
         print(data)

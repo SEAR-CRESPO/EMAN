@@ -20,4 +20,12 @@ class domicilioControllers:
             return jsonify({"error": "Faltan datos", "faltantes": falt}), 400
         
         x = domicilioService.add(data)
-        return x
+        return jsonify({"mensaje": "se registro", "data": x}), 201
+
+
+    def delete(uuid):
+        x = domicilioService.delate(uuid)
+        if x == 404:
+            return jsonify({"Mensaje":"No se encontro el registro"}), x
+        else:
+            return jsonify({"Mensaje":"Se elimino correctamente"}), x

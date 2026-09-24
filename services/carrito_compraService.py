@@ -9,26 +9,36 @@ class carrito_compraService:
 
         query = """INSERT INTO t_carrito_compra
 
-            (COMC_UUID,COMC_CODIGO,COMC_TOTAL_COMPRA,COMC_FECHA) VALUES
+            (comc_uuid,comc_codigo,comc_total_compra,comc_fecha) VALUES
             (%s, %s, %s, %s)"""
-        c.execute(query, (uuid_comc, data["CODIGO"], data["TOTAL_COMPRA"], data["FECHA"]))
+        c.execute(query, (uuid_comc, data["COMC_CODIGO"], data["COMC_TOTAL_COMPRA"], data["COMC_FECHA"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_comc, "CODIGO": data["CODIGO"],
-                "TOTAL_COMPRA": data["TOTAL_COMPRA"], "FECHA":data ["FECHA"]}
+        data = {"ID": ID, "UUID": uuid_comc, "CODIGO": data["COMC_CODIGO"],
+                "TOTAL_COMPRA": data["COMC_TOTAL_COMPRA"], "FECHA":data ["COMC_FECHA"]}
         return data
+
+    # marca la posicion %s
+    def delete(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_carrito_compra WHERE comc_uuid = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
+        
 
     def update():
         pass
 
-    def delate():
-        pass
-
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_carrito_compra"
+        query = "SELECT * FROM t_carrito_compra"
         c.execute(query)
         data = c.fetchall()
         print(data)

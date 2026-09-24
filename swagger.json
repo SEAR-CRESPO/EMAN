@@ -1,0 +1,2606 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API EMAN-FASHION",
+    "description": "Documentación completa de la API para el sistema de gestión de tienda en línea. Incluye gestión de personas, clientes, administradores, productos, compras, carrito, pagos, domicilios, ubicaciones y contactos.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Equipo de Desarrollo",
+      "email": "desarrollo@tienda.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3000",
+      "description": "Entorno de desarrollo local"
+    },
+    {
+      "url": "https://api.tienda.com",
+      "description": "Entorno de producción"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Personas",
+      "description": "Gestión de personas (usuarios base)"
+    },
+    {
+      "name": "Clientes",
+      "description": "Gestión de clientes"
+    },
+    {
+      "name": "Administradores",
+      "description": "Gestión de administradores"
+    },
+    {
+      "name": "Productos",
+      "description": "Gestión de productos del catálogo"
+    },
+    {
+      "name": "Tipos de Género",
+      "description": "Categorías/géneros de productos"
+    },
+    {
+      "name": "Compras",
+      "description": "Gestión de pedidos y compras"
+    },
+    {
+      "name": "Productos por Compra",
+      "description": "Relación productos - compras"
+    },
+    {
+      "name": "Carrito de Compras",
+      "description": "Gestión del carrito de compras"
+    },
+    {
+      "name": "Productos en Carrito",
+      "description": "Relación productos - carrito"
+    },
+    {
+      "name": "Pagos",
+      "description": "Gestión de pagos de compras"
+    },
+    {
+      "name": "Domicilios",
+      "description": "Gestión de domicilios/envíos"
+    },
+    {
+      "name": "Ubicaciones",
+      "description": "Gestión de ubicaciones y direcciones"
+    },
+    {
+      "name": "Contactos de Persona",
+      "description": "Gestión de contactos (teléfonos, correos) de personas"
+    },
+    {
+      "name": "Contactos de Domicilio",
+      "description": "Gestión de contactos asociados a domicilios"
+    }
+  ],
+  "paths": {
+    "/persona": {
+      "get": {
+        "tags": ["Personas"],
+        "summary": "Listar todas las personas",
+        "description": "Obtiene el listado completo de todas las personas registradas en el sistema",
+        "responses": {
+          "200": {
+            "description": "Lista de personas obtenida exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Persona"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Personas"],
+        "summary": "Crear una nueva persona",
+        "description": "Registra una nueva persona en el sistema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonaCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Persona creada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Persona"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/persona/{uuid}": {
+      "get": {
+        "tags": ["Personas"],
+        "summary": "Obtener persona por uuid",
+        "description": "Obtiene los datos de una persona específica por su identificador",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "description": "ID único de la persona",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Persona encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Persona"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Persona no encontrada"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Personas"],
+        "summary": "Actualizar persona",
+        "description": "Actualiza los datos de una persona existente",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID único de la persona",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonaCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persona actualizada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Persona"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos"
+          },
+          "404": {
+            "description": "Persona no encontrada"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Personas"],
+        "summary": "Eliminar persona",
+        "description": "Elimina una persona del sistema por su uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID único de la persona",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Persona eliminada exitosamente"
+          },
+          "404": {
+            "description": "Persona no encontrada"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/cliente": {
+      "get": {
+        "tags": ["Clientes"],
+        "summary": "Listar todos los clientes",
+        "responses": {
+          "200": {
+            "description": "Lista de clientes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cliente"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Clientes"],
+        "summary": "Crear un nuevo cliente",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClienteCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cliente creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cliente/{uuid}": {
+      "get": {
+        "tags": ["Clientes"],
+        "summary": "Obtener cliente por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cliente encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente no encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Clientes"],
+        "summary": "Actualizar cliente",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClienteCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cliente actualizado"
+          },
+          "404": {
+            "description": "Cliente no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Clientes"],
+        "summary": "Eliminar cliente",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cliente eliminado"
+          },
+          "404": {
+            "description": "Cliente no encontrado"
+          }
+        }
+      }
+    },
+    "/administrador": {
+      "get": {
+        "tags": ["Administradores"],
+        "summary": "Listar todos los administradores",
+        "responses": {
+          "200": {
+            "description": "Lista de administradores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Administrador"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Administradores"],
+        "summary": "Crear un nuevo administrador",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdministradorCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Administrador creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Administrador"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/administrador/{uuid}": {
+      "get": {
+        "tags": ["Administradores"],
+        "summary": "Obtener administrador por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Administrador encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Administrador"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Administrador no encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Administradores"],
+        "summary": "Actualizar administrador",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdministradorCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Administrador actualizado"
+          },
+          "404": {
+            "description": "Administrador no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Administradores"],
+        "summary": "Eliminar administrador",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Administrador eliminado"
+          },
+          "404": {
+            "description": "Administrador no encontrado"
+          }
+        }
+      }
+    },
+    "/producto": {
+      "get": {
+        "tags": ["Productos"],
+        "summary": "Listar todos los productos",
+        "responses": {
+          "200": {
+            "description": "Lista de productos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Productos"],
+        "summary": "Crear un nuevo producto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Producto creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/producto/{uuid}": {
+      "get": {
+        "tags": ["Productos"],
+        "summary": "Obtener producto por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Productos"],
+        "summary": "Actualizar producto",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Producto actualizado"
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Productos"],
+        "summary": "Eliminar producto",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto eliminado"
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      }
+    },
+    "/tipo_genero": {
+      "get": {
+        "tags": ["Tipos de Género"],
+        "summary": "Listar todos los tipos de género",
+        "responses": {
+          "200": {
+            "description": "Lista de tipos de género",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TipoGenero"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Tipos de Género"],
+        "summary": "Crear un nuevo tipo de género",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoGeneroCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tipo de género creado"
+          }
+        }
+      }
+    },
+    "/tipo_genero/{uuid}": {
+      "get": {
+        "tags": ["Tipos de Género"],
+        "summary": "Obtener tipo de género por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tipo de género encontrado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Tipos de Género"],
+        "summary": "Actualizar tipo de género",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoGeneroCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Tipos de Género"],
+        "summary": "Eliminar tipo de género",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/compra": {
+      "get": {
+        "tags": ["Compras"],
+        "summary": "Listar todas las compras",
+        "responses": {
+          "200": {
+            "description": "Lista de compras",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Compra"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Compras"],
+        "summary": "Crear una nueva compra",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompraCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Compra creada"
+          }
+        }
+      }
+    },
+    "/compra/{uuid}": {
+      "get": {
+        "tags": ["Compras"],
+        "summary": "Obtener compra por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Compra encontrada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Compras"],
+        "summary": "Actualizar compra",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompraCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Compra actualizada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Compras"],
+        "summary": "Eliminar compra",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Compra eliminada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      }
+    },
+    "/produ_compr{uuid}": {
+      "get": {
+        "tags": ["Productos por Compra"],
+        "summary": "Listar productos por compra",
+        "responses": {
+          "200": {
+            "description": "Lista de productos por compra",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProduCompr"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Productos por Compra"],
+        "summary": "Agregar producto a una compra",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProduComprCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Producto agregado a la compra"
+          }
+        }
+      }
+    },
+    "/produ_compr/{uuid}": {
+      "get": {
+        "tags": ["Productos por Compra"],
+        "summary": "Obtener relación producto-compra por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Relación encontrada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Productos por Compra"],
+        "summary": "Actualizar relación producto-compra",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProduComprCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Productos por Compra"],
+        "summary": "Eliminar relación producto-compra",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/carrito": {
+      "get": {
+        "tags": ["Carrito de Compras"],
+        "summary": "Listar todos los carritos",
+        "responses": {
+          "200": {
+            "description": "Lista de carritos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarritoCompra"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Carrito de Compras"],
+        "summary": "Crear un nuevo carrito",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarritoCompraCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Carrito creado"
+          }
+        }
+      }
+    },
+    "/carrito/{uuid}": {
+      "get": {
+        "tags": ["Carrito de Compras"],
+        "summary": "Obtener carrito por ID",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Carrito encontrado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Carrito de Compras"],
+        "summary": "Actualizar carrito",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarritoCompraCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Carrito actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Carrito de Compras"],
+        "summary": "Eliminar carrito",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Carrito eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/produc_carri/{uuid}": {
+      "get": {
+        "tags": ["Productos en Carrito"],
+        "summary": "Listar productos en carritos",
+        "responses": {
+          "200": {
+            "description": "Lista de productos en carrito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProducCarri"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Productos en Carrito"],
+        "summary": "Agregar producto a un carrito",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProducCarriCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Producto agregado al carrito"
+          }
+        }
+      }
+    },
+    "/product_carri/{uuid}": {
+      "get": {
+        "tags": ["Productos en Carrito"],
+        "summary": "Obtener relación producto-carrito por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Relación encontrada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Productos en Carrito"],
+        "summary": "Actualizar relación producto-carrito",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProducCarriCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Productos en Carrito"],
+        "summary": "Eliminar relación producto-carrito",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/pago": {
+      "get": {
+        "tags": ["Pagos"],
+        "summary": "Listar todos los pagos",
+        "responses": {
+          "200": {
+            "description": "Lista de pagos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pago"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Pagos"],
+        "summary": "Crear un nuevo pago",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pago creado"
+          }
+        }
+      }
+    },
+    "/pago/{uuid}": {
+      "get": {
+        "tags": ["Pagos"],
+        "summary": "Obtener pago por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pago encontrado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Pagos"],
+        "summary": "Actualizar pago",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pago actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Pagos"],
+        "summary": "Eliminar pago",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pago eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/domicilio": {
+      "get": {
+        "tags": ["Domicilios"],
+        "summary": "Listar todos los domicilios",
+        "responses": {
+          "200": {
+            "description": "Lista de domicilios",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Domicilio"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Domicilios"],
+        "summary": "Crear un nuevo domicilio",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/domicilio"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Domicilio creado"
+          }
+        }
+      }
+    },
+    "/domicilio/{uuid}": {
+      "get": {
+        "tags": ["Domicilios"],
+        "summary": "Obtener domicilio por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Domicilio encontrado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Domicilios"],
+        "summary": "Actualizar domicilio",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DomicilioCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Domicilio actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Domicilios"],
+        "summary": "Eliminar domicilio",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Domicilio eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/ubicacion": {
+      "get": {
+        "tags": ["Ubicaciones"],
+        "summary": "Listar todas las ubicaciones",
+        "responses": {
+          "200": {
+            "description": "Lista de ubicaciones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ubicacion"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Ubicaciones"],
+        "summary": "Crear una nueva ubicación",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ubicacionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Ubicación creada"
+          }
+        }
+      }
+    },
+    "/ubicacion/{uuid}": {
+      "get": {
+        "tags": ["Ubicaciones"],
+        "summary": "Obtener ubicación por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ubicación encontrada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Ubicaciones"],
+        "summary": "Actualizar ubicación",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UbicacionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ubicación actualizada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Ubicaciones"],
+        "summary": "Eliminar ubicación",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ubicación eliminada"
+          },
+          "404": {
+            "description": "No encontrada"
+          }
+        }
+      }
+    },
+    "/per_contacto": {
+      "get": {
+        "tags": ["Contactos de Persona"],
+        "summary": "Listar contactos de personas",
+        "responses": {
+          "200": {
+            "description": "Lista de contactos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PerContacto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Contactos de Persona"],
+        "summary": "Crear contacto para una persona",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PerContactoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contacto creado"
+          }
+        }
+      }
+    },
+    "/per_contacto/{uuid}": {
+      "get": {
+        "tags": ["Contactos de Persona"],
+        "summary": "Obtener contacto por uuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contacto encontrado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Contactos de Persona"],
+        "summary": "Actualizar contacto",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PerContactoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Contacto actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Contactos de Persona"],
+        "summary": "Eliminar contacto",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contacto eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    },
+    "/dom_contacto": {
+      "get": {
+        "tags": ["Contactos de Domicilio"],
+        "summary": "Listar contactos de domicilios",
+        "responses": {
+          "200": {
+            "description": "Lista de contactos de domicilio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DomContacto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Contactos de Domicilio"],
+        "summary": "Crear contacto para un domicilio",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DomContactoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contacto creado"
+          }
+        }
+      }
+    },
+    "/dom_contacto/{uuid}": {
+      "get": {
+        "tags": ["Contactos de Domicilio"],
+        "summary": "Obtener contacto de domicilio por ID",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contacto encontrado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Contactos de Domicilio"],
+        "summary": "Actualizar contacto de domicilio",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DomContactoCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Contacto actualizado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Contactos de Domicilio"],
+        "summary": "Eliminar contacto de domicilio",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contacto eliminado"
+          },
+          "404": {
+            "description": "No encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Persona": {
+        "type": "object",
+        "description": "Modelo que representa a una persona en el sistema",
+        "properties": {
+          "PER_ID": {
+            "type": "integer",
+            "description": "Identificador único de la persona",
+            "example": 1
+          },
+          "PER_UUID": {
+            "type": "string",
+            "description": "UUID único de la persona",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "PER_CONTRASENA": {
+            "type": "string",
+            "description": "Contraseña de la persona (almacenada encriptada)",
+            "example": "********"
+          },
+          "PER_NUMERO_DOCUMENTO": {
+            "type": "string",
+            "description": "Número de documento de identidad",
+            "example": "123456789"
+          },
+          "PER_PRIMER_NOMBRE": {
+            "type": "string",
+            "description": "Primer nombre de la persona",
+            "example": "Juan"
+          },
+          "PER_SEGUNDO_NOMBRE": {
+            "type": "string",
+            "description": "Segundo nombre de la persona",
+            "example": "Carlos"
+          },
+          "PER_PRIMER_APELLIDO": {
+            "type": "string",
+            "description": "Primer apellido de la persona",
+            "example": "Pérez"
+          },
+          "PER_SEGUNDO_APELLIDO": {
+            "type": "string",
+            "description": "Segundo apellido de la persona",
+            "example": "Gómez"
+          }
+        },
+        "required": ["PER_ID", "PER_UUID", "PER_CONTRASENA", "PER_NUMERO_DOCUMENTO", "PER_PRIMER_NOMBRE", "PER_PRIMER_APELLIDO"]
+      },
+      "PersonaCreate": {
+        "type": "object",
+        "description": "Modelo para crear una nueva persona",
+        "properties": {
+          "PER_CONTRASENA": {
+            "type": "string",
+            "example": "MiContraseña123"
+          },
+          "PER_NUMERO_DOCUMENTO": {
+            "type": "string",
+            "example": "123456789"
+          },
+          "PER_PRIMER_NOMBRE": {
+            "type": "string",
+            "example": "Juan"
+          },
+          "PER_SEGUNDO_NOMBRE": {
+            "type": "string",
+            "example": "Carlos"
+          },
+          "PER_PRIMER_APELLIDO": {
+            "type": "string",
+            "example": "Pérez"
+          },
+          "PER_SEGUNDO_APELLIDO": {
+            "type": "string",
+            "example": "Gómez"
+          }
+        },
+        "required": ["PER_CONTRASENA", "PER_NUMERO_DOCUMENTO", "PER_PRIMER_NOMBRE", "PER_PRIMER_APELLIDO"]
+      },
+      "Cliente": {
+        "type": "object",
+        "description": "Modelo que representa a un cliente",
+        "properties": {
+          "CLI_ID": {
+            "type": "integer",
+            "description": "Identificador único del cliente",
+            "example": 1
+          },
+          "CLI_UUID": {
+            "type": "string",
+            "description": "UUID único del cliente",
+            "example": "550e8400-e29b-41d4-a716-446655440001"
+          },
+          "CLI_PER_ID": {
+            "type": "integer",
+            "description": "ID de la persona asociada al cliente",
+            "example": 1
+          }
+        },
+        "required": ["CLI_ID", "CLI_UUID", "CLI_PER_ID"]
+      },
+      "ClienteCreate": {
+        "type": "object",
+        "properties": {
+          "CLI_PER_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["CLI_PER_ID"]
+      },
+      "Administrador": {
+        "type": "object",
+        "description": "Modelo que representa a un administrador",
+        "properties": {
+          "ADM_ID": {
+            "type": "integer",
+            "description": "Identificador único del administrador",
+            "example": 1
+          },
+          "ADM_UUID": {
+            "type": "string",
+            "description": "UUID único del administrador",
+            "example": "550e8400-e29b-41d4-a716-446655440002"
+          },
+          "ADM_PER_ID": {
+            "type": "integer",
+            "description": "ID de la persona asociada al administrador",
+            "example": 2
+          }
+        },
+        "required": ["ADM_ID", "ADM_UUID", "ADM_PER_ID"]
+      },
+      "AdministradorCreate": {
+        "type": "object",
+        "properties": {
+          "ADM_PER_ID": {
+            "type": "integer",
+            "example": 2
+          }
+        },
+        "required": ["ADM_PER_ID"]
+      },
+      "Producto": {
+        "type": "object",
+        "description": "Modelo que representa un producto del catálogo",
+        "properties": {
+          "PRO_ID": {
+            "type": "integer",
+            "description": "Identificador único del producto",
+            "example": 1
+          },
+          "PRO_UUID": {
+            "type": "string",
+            "description": "UUID único del producto",
+            "example": "550e8400-e29b-41d4-a716-446655440003"
+          },
+          "PRO_CODIGO": {
+            "type": "string",
+            "description": "Código de referencia del producto",
+            "example": "PROD-001"
+          },
+          "PRO_NOMBRE": {
+            "type": "string",
+            "description": "Nombre del producto",
+            "example": "Camiseta Deportiva"
+          },
+          "PRO_TALLA": {
+            "type": "string",
+            "description": "Talla del producto",
+            "example": "M"
+          },
+          "PRO_MARCA": {
+            "type": "string",
+            "description": "Marca del producto",
+            "example": "Nike"
+          },
+          "PRO_DESCRIPCION": {
+            "type": "string",
+            "description": "Descripción detallada del producto",
+            "example": "Camiseta deportiva de algodón, ideal para ejercicio"
+          },
+          "PRO_COLOR": {
+            "type": "string",
+            "description": "Color del producto",
+            "example": "Azul"
+          },
+          "PRO_PRECIO": {
+            "type": "number",
+            "format": "float",
+            "description": "Precio unitario del producto",
+            "example": 49900.00
+          }
+        },
+        "required": ["PRO_ID", "PRO_UUID", "PRO_CODIGO", "PRO_NOMBRE", "PRO_PRECIO"]
+      },
+      "ProductoCreate": {
+        "type": "object",
+        "properties": {
+          "PRO_CODIGO": {
+            "type": "string",
+            "example": "PROD-001"
+          },
+          "PRO_NOMBRE": {
+            "type": "string",
+            "example": "Camiseta Deportiva"
+          },
+          "PRO_TALLA": {
+            "type": "string",
+            "example": "M"
+          },
+          "PRO_MARCA": {
+            "type": "string",
+            "example": "Nike"
+          },
+          "PRO_DESCRIPCION": {
+            "type": "string",
+            "example": "Camiseta deportiva de algodón"
+          },
+          "PRO_COLOR": {
+            "type": "string",
+            "example": "Azul"
+          },
+          "PRO_PRECIO": {
+            "type": "number",
+            "format": "float",
+            "example": 49900.00
+          }
+        },
+        "required": ["PRO_CODIGO", "PRO_NOMBRE", "PRO_PRECIO"]
+      },
+      "TipoGenero": {
+        "type": "object",
+        "description": "Modelo que representa el tipo/género de un producto",
+        "properties": {
+          "GEN_ID": {
+            "type": "integer",
+            "description": "Identificador único del género",
+            "example": 1
+          },
+          "GEN_UUID": {
+            "type": "string",
+            "description": "UUID único del género",
+            "example": "550e8400-e29b-41d4-a716-446655440004"
+          },
+          "GEN_GENERO": {
+            "type": "string",
+            "description": "Nombre del género (ej: Hombre, Mujer, Unisex, Niño)",
+            "example": "Hombre"
+          },
+          "GEN_PRO_ID": {
+            "type": "integer",
+            "description": "ID del producto asociado",
+            "example": 1
+          }
+        },
+        "required": ["GEN_ID", "GEN_UUID", "GEN_GENERO", "GEN_PRO_ID"]
+      },
+      "TipoGeneroCreate": {
+        "type": "object",
+        "properties": {
+          "GEN_GENERO": {
+            "type": "string",
+            "example": "Hombre"
+          },
+          "GEN_PRO_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["GEN_GENERO", "GEN_PRO_ID"]
+      },
+      "Compra": {
+        "type": "object",
+        "description": "Modelo que representa una compra/pedido",
+        "properties": {
+          "COM_ID": {
+            "type": "integer",
+            "description": "Identificador único de la compra",
+            "example": 1
+          },
+          "COM_UUID": {
+            "type": "string",
+            "description": "UUID único de la compra",
+            "example": "550e8400-e29b-41d4-a716-446655440005"
+          },
+          "COM_NUMERO_COMPRA": {
+            "type": "string",
+            "description": "Número de referencia de la compra",
+            "example": "COMP-2024-0001"
+          },
+          "COM_METODO_ENTREGA": {
+            "type": "string",
+            "description": "Método de entrega (Domicilio, Recoge en tienda)",
+            "example": "Domicilio"
+          },
+          "COM_FECHA_COMPRA": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Fecha y hora de la compra",
+            "example": "2024-01-15T10:30:00Z"
+          },
+          "COM_ADM_ID": {
+            "type": "integer",
+            "description": "ID del administrador que gestiona la compra",
+            "example": 1
+          },
+          "COM_CLI_ID": {
+            "type": "integer",
+            "description": "ID del cliente que realiza la compra",
+            "example": 1
+          }
+        },
+        "required": ["COM_ID", "COM_UUID", "COM_NUMERO_COMPRA", "COM_FECHA_COMPRA", "COM_CLI_ID"]
+      },
+      "CompraCreate": {
+        "type": "object",
+        "properties": {
+          "COM_NUMERO_COMPRA": {
+            "type": "string",
+            "example": "COMP-2024-0001"
+          },
+          "COM_METODO_ENTREGA": {
+            "type": "string",
+            "example": "Domicilio"
+          },
+          "COM_FECHA_COMPRA": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-01-15T10:30:00Z"
+          },
+          "COM_ADM_ID": {
+            "type": "integer",
+            "example": 1
+          },
+          "COM_CLI_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["COM_NUMERO_COMPRA", "COM_FECHA_COMPRA", "COM_CLI_ID"]
+      },
+      "ProduCompr": {
+        "type": "object",
+        "description": "Modelo intermedio: Productos incluidos en una compra",
+        "properties": {
+          "PRCO_ID": {
+            "type": "integer",
+            "description": "Identificador único de la relación",
+            "example": 1
+          },
+          "PRCO_UUID": {
+            "type": "string",
+            "description": "UUID único de la relación",
+            "example": "550e8400-e29b-41d4-a716-446655440006"
+          },
+          "PRCO_CANTIDAD": {
+            "type": "integer",
+            "description": "Cantidad de unidades del producto en la compra",
+            "example": 2
+          },
+          "PRCO_COM_ID": {
+            "type": "integer",
+            "description": "ID de la compra",
+            "example": 1
+          },
+          "PRCO_PRO_ID": {
+            "type": "integer",
+            "description": "ID del producto",
+            "example": 1
+          }
+        },
+        "required": ["PRCO_ID", "PRCO_UUID", "PRCO_CANTIDAD", "PRCO_COM_ID", "PRCO_PRO_ID"]
+      },
+      "ProduComprCreate": {
+        "type": "object",
+        "properties": {
+          "PRCO_CANTIDAD": {
+            "type": "integer",
+            "example": 2
+          },
+          "PRCO_COM_ID": {
+            "type": "integer",
+            "example": 1
+          },
+          "PRCO_PRO_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["PRCO_CANTIDAD", "PRCO_COM_ID", "PRCO_PRO_ID"]
+      },
+      "CarritoCompra": {
+        "type": "object",
+        "description": "Modelo que representa el carrito de compras",
+        "properties": {
+          "COMC_ID": {
+            "type": "integer",
+            "description": "Identificador único del carrito",
+            "example": 1
+          },
+          "COMC_UUID": {
+            "type": "string",
+            "description": "UUID único del carrito",
+            "example": "550e8400-e29b-41d4-a716-446655440007"
+          },
+          "COMC_CODIGO": {
+            "type": "string",
+            "description": "Código de referencia del carrito",
+            "example": "CART-001"
+          },
+          "COMC_TOTAL_COMPRA": {
+            "type": "number",
+            "format": "float",
+            "description": "Valor total de los productos en el carrito",
+            "example": 99800.00
+          },
+          "COMC_FECHA": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Fecha de creación del carrito",
+            "example": "2024-01-15T10:00:00Z"
+          }
+        },
+        "required": ["COMC_ID", "COMC_UUID", "COMC_CODIGO", "COMC_TOTAL_COMPRA", "COMC_FECHA"]
+      },
+      "CarritoCompraCreate": {
+        "type": "object",
+        "properties": {
+          "COMC_CODIGO": {
+            "type": "string",
+            "example": "CART-001"
+          },
+          "COMC_TOTAL_COMPRA": {
+            "type": "number",
+            "format": "float",
+            "example": 99800.00
+          },
+          "COMC_FECHA": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-01-15T10:00:00Z"
+          }
+        },
+        "required": ["COMC_CODIGO", "COMC_TOTAL_COMPRA", "COMC_FECHA"]
+      },
+      "ProducCarri": {
+        "type": "object",
+        "description": "Modelo intermedio: Productos agregados a un carrito",
+        "properties": {
+          "PROC_ID": {
+            "type": "integer",
+            "description": "Identificador único de la relación",
+            "example": 1
+          },
+          "PROC_UUID": {
+            "type": "string",
+            "description": "UUID único de la relación",
+            "example": "550e8400-e29b-41d4-a716-446655440008"
+          },
+          "PROC_CANTIDAD": {
+            "type": "integer",
+            "description": "Cantidad de unidades del producto en el carrito",
+            "example": 2
+          },
+          "PROC_PRO_ID": {
+            "type": "integer",
+            "description": "ID del producto",
+            "example": 1
+          },
+          "PROC_COMC_ID": {
+            "type": "integer",
+            "description": "ID del carrito de compras",
+            "example": 1
+          }
+        },
+        "required": ["PROC_ID", "PROC_UUID", "PROC_CANTIDAD", "PROC_PRO_ID", "PROC_COMC_ID"]
+      },
+      "ProducCarriCreate": {
+        "type": "object",
+        "properties": {
+          "PROC_CANTIDAD": {
+            "type": "integer",
+            "example": 2
+          },
+          "PROC_PRO_ID": {
+            "type": "integer",
+            "example": 1
+          },
+          "PROC_COMC_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["PROC_CANTIDAD", "PROC_PRO_ID", "PROC_COMC_ID"]
+      },
+      "Pago": {
+        "type": "object",
+        "description": "Modelo que representa un pago asociado a una compra",
+        "properties": {
+          "PAG_ID": {
+            "type": "integer",
+            "description": "Identificador único del pago",
+            "example": 1
+          },
+          "PAG_UUID": {
+            "type": "string",
+            "description": "UUID único del pago",
+            "example": "550e8400-e29b-41d4-a716-446655440009"
+          },
+          "PAG_NUMERO_PAGO": {
+            "type": "string",
+            "description": "Número de referencia del pago",
+            "example": "PAG-2024-0001"
+          },
+          "PAG_VALOR": {
+            "type": "number",
+            "format": "float",
+            "description": "Valor pagado",
+            "example": 99800.00
+          },
+          "PAG_METODO": {
+            "type": "string",
+            "description": "Método de pago (Efectivo, Tarjeta, Transferencia, PSE)",
+            "example": "Tarjeta"
+          },
+          "PAG_ESTADO": {
+            "type": "string",
+            "description": "Estado del pago (Pendiente, Aprobado, Rechazado, Anulado)",
+            "example": "Aprobado"
+          },
+          "PAG_FECHA": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Fecha y hora del pago",
+            "example": "2024-01-15T10:45:00Z"
+          },
+          "PAG_COM_ID": {
+            "type": "integer",
+            "description": "ID de la compra asociada al pago",
+            "example": 1
+          }
+        },
+        "required": ["PAG_ID", "PAG_UUID", "PAG_NUMERO_PAGO", "PAG_VALOR", "PAG_METODO", "PAG_ESTADO", "PAG_FECHA", "PAG_COM_ID"]
+      },
+      "PagoCreate": {
+        "type": "object",
+        "properties": {
+          "PAG_NUMERO_PAGO": {
+            "type": "string",
+            "example": "PAG-2024-0001"
+          },
+          "PAG_VALOR": {
+            "type": "number",
+            "format": "float",
+            "example": 99800.00
+          },
+          "PAG_METODO": {
+            "type": "string",
+            "example": "Tarjeta"
+          },
+          "PAG_ESTADO": {
+            "type": "string",
+            "example": "Aprobado"
+          },
+          "PAG_FECHA": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-01-15T10:45:00Z"
+          },
+          "PAG_COM_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["PAG_NUMERO_PAGO", "PAG_VALOR", "PAG_METODO", "PAG_ESTADO", "PAG_FECHA", "PAG_COM_ID"]
+      },
+      "Domicilio": {
+        "type": "object",
+        "description": "Modelo que representa un domicilio/envío",
+        "properties": {
+          "DOM_ID": {
+            "type": "integer",
+            "description": "Identificador único del domicilio",
+            "example": 1
+          },
+          "DOM_UUID": {
+            "type": "string",
+            "description": "UUID único del domicilio",
+            "example": "550e8400-e29b-41d4-a716-446655440010"
+          },
+          "DOM_CODIGO": {
+            "type": "string",
+            "description": "Código de referencia del domicilio",
+            "example": "DOM-001"
+          },
+          "DOM_COM_ID": {
+            "type": "integer",
+            "description": "ID de la compra asociada al domicilio",
+            "example": 1
+          }
+        },
+        "required": ["DOM_ID", "DOM_UUID", "DOM_CODIGO", "DOM_COM_ID"]
+      },
+      "DomicilioCreate": {
+        "type": "object",
+        "properties": {
+          "DOM_CODIGO": {
+            "type": "string",
+            "example": "DOM-001"
+          },
+          "DOM_COM_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["DOM_CODIGO", "DOM_COM_ID"]
+      },
+      "Ubicacion": {
+        "type": "object",
+        "description": "Modelo que representa la ubicación/dirección de un domicilio",
+        "properties": {
+          "UBI_ID": {
+            "type": "integer",
+            "description": "Identificador único de la ubicación",
+            "example": 1
+          },
+          "UBI_UUID": {
+            "type": "string",
+            "description": "UUID único de la ubicación",
+            "example": "550e8400-e29b-41d4-a716-446655440011"
+          },
+          "UBI_CIUDAD": {
+            "type": "string",
+            "description": "Ciudad de la ubicación",
+            "example": "Bogotá"
+          },
+          "UBI_BARRIO": {
+            "type": "string",
+            "description": "Barrio de la ubicación",
+            "example": "Chapinero"
+          },
+          "UBI_DIRECCION": {
+            "type": "string",
+            "description": "Dirección completa",
+            "example": "Calle 72 # 10-25"
+          },
+          "UBI_DOM_ID": {
+            "type": "integer",
+            "description": "ID del domicilio asociado",
+            "example": 1
+          }
+        },
+        "required": ["UBI_ID", "UBI_UUID", "UBI_CIUDAD", "UBI_BARRIO", "UBI_DIRECCION", "UBI_DOM_ID"]
+      },
+      "UbicacionCreate": {
+        "type": "object",
+        "properties": {
+          "UBI_CIUDAD": {
+            "type": "string",
+            "example": "Bogotá"
+          },
+          "UBI_BARRIO": {
+            "type": "string",
+            "example": "Chapinero"
+          },
+          "UBI_DIRECCION": {
+            "type": "string",
+            "example": "Calle 72 # 10-25"
+          },
+          "UBI_DOM_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["UBI_CIUDAD", "UBI_BARRIO", "UBI_DIRECCION", "UBI_DOM_ID"]
+      },
+      "PerContacto": {
+        "type": "object",
+        "description": "Modelo que representa un contacto (teléfono, correo) asociado a una persona",
+        "properties": {
+          "CON_ID": {
+            "type": "integer",
+            "description": "Identificador único del contacto",
+            "example": 1
+          },
+          "CON_UUID": {
+            "type": "string",
+            "description": "UUID único del contacto",
+            "example": "550e8400-e29b-41d4-a716-446655440012"
+          },
+          "CON_TIPO_CONTACTO": {
+            "type": "string",
+            "description": "Tipo de contacto (Teléfono, Celular, Correo electrónico)",
+            "example": "Celular"
+          },
+          "CON_VALOR": {
+            "type": "string",
+            "description": "Valor del contacto (número o dirección)",
+            "example": "3001234567"
+          },
+          "CON_PER_ID": {
+            "type": "integer",
+            "description": "ID de la persona asociada",
+            "example": 1
+          }
+        },
+        "required": ["CON_ID", "CON_UUID", "CON_TIPO_CONTACTO", "CON_VALOR", "CON_PER_ID"]
+      },
+      "PerContactoCreate": {
+        "type": "object",
+        "properties": {
+          "CON_TIPO_CONTACTO": {
+            "type": "string",
+            "example": "Celular"
+          },
+          "CON_VALOR": {
+            "type": "string",
+            "example": "3001234567"
+          },
+          "CON_PER_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["CON_TIPO_CONTACTO", "CON_VALOR", "CON_PER_ID"]
+      },
+      "DomContacto": {
+        "type": "object",
+        "description": "Modelo que representa un contacto asociado a un domicilio",
+        "properties": {
+          "CON_ID": {
+            "type": "integer",
+            "description": "Identificador único del contacto",
+            "example": 1
+          },
+          "CON_UUID": {
+            "type": "string",
+            "description": "UUID único del contacto",
+            "example": "550e8400-e29b-41d4-a716-446655440013"
+          },
+          "CON_TIPO_CONTACTO": {
+            "type": "string",
+            "description": "Tipo de contacto (Teléfono, Celular, Correo electrónico)",
+            "example": "Celular"
+          },
+          "CON_VALOR": {
+            "type": "string",
+            "description": "Valor del contacto",
+            "example": "3109876543"
+          },
+          "CON_DOM_ID": {
+            "type": "integer",
+            "description": "ID del domicilio asociado",
+            "example": 1
+          }
+        },
+        "required": ["CON_ID", "CON_UUID", "CON_TIPO_CONTACTO", "CON_VALOR", "CON_DOM_ID"]
+      },
+      "DomContactoCreate": {
+        "type": "object",
+        "properties": {
+          "CON_TIPO_CONTACTO": {
+            "type": "string",
+            "example": "Celular"
+          },
+          "CON_VALOR": {
+            "type": "string",
+            "example": "3109876543"
+          },
+          "CON_DOM_ID": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": ["CON_TIPO_CONTACTO", "CON_VALOR", "CON_DOM_ID"]
+      }
+    }
+  }
+}

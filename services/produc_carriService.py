@@ -9,26 +9,35 @@ class produc_carriService:
 
         query = """INSERT INTO t_produc_carri
 
-            (PROC_UUID, PROC_CANTIDAD, PROC_PRO_ID, PROC_COMC_ID) VALUES
+            (proc_uuid, proc_cantidad, proc_pro_id, proc_comc_id) VALUES
             (%s, %s, %s, %s)"""
-        c.execute(query, (uuid_proc, data["CANTIDAD"], data["PRO_ID"], data["COMC_ID"]))
+        c.execute(query, (uuid_proc, data["PROC_CANTIDAD"], data["PROC_PRO_ID"], data["PROC_COMC_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_proc, "CANTIDAD": data["CANTIDAD"],
-                "PRO_ID": data["PRO_ID"], "COMC_ID":data ["COMC_ID"]}
+        data = {"ID": ID, "UUID": uuid_proc, "CANTIDAD": data["PROC_CANTIDAD"],
+                "PRO_ID": data["PROC_PRO_ID"], "COMC_ID":data ["PROC_COMC_ID"]}
         return data
 
     def update():
         pass
 
-    def delate():
-        pass
+    # marca la posicion %s
+    def delete(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_produc_carri WHERE proc_uuid = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_produc_carri"
+        query = "SELECT * FROM t_produc_carri"
         c.execute(query)
         data = c.fetchall()
         print(data)

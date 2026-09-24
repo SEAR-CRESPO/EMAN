@@ -10,5 +10,12 @@ def home():
 
 @producto_bp.route('/', methods= ["post"])
 def add():
+    data = productoControllers.add()
     
-    return 
+    return data
+
+
+@producto_bp.route('/<uuid>', methods= ["delete"])
+def delete(uuid):
+    data = productoControllers.delete(uuid)
+    return data

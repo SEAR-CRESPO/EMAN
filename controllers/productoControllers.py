@@ -21,3 +21,10 @@ class productoControllers:
         
         x = productoService.add(data)
         return jsonify({"mensaje": "se registro", "data": x}), 201
+
+    def delete(uuid):
+        x = productoService.delate(uuid)
+        if x == 404:
+            return jsonify({"Mensaje":"No se encontro el registro"}), x
+        else:
+            return jsonify({"Mensaje":"Se elimino correctamente"}), x

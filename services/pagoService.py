@@ -9,28 +9,37 @@ class pagoService:
 
         query = """INSERT INTO t_pago
 
-            (PAG_UUID, PAG_NUMERO_PAGO, PAG_VALOR, PAG_METODO, PAG_ESTADO, PAG_FECHA, PAG_COM_ID) VALUES
+            (pag_uuid, pag_numero_pago, pag_valor, pag_metodo, pag_estado, paga_fecha, pag_con_id) VALUES
             (%s, %s, %s, %s, %s, %s, %s)"""
-        c.execute(query, (uuid_pag, data["NUMERO_PAGO"], data["VALOR"], data["METODO"], data["ESTADO"], data["FECHA"], data["COM_ID"]))
+        c.execute(query, (uuid_pag, data["PAG_NUMERO_PAGO"], data["PAG_VALOR"], data["PAG_METODO"], data["PAG_ESTADO"], data["PAG_FECHA"], data["PAG_COM_ID"]))
 
         current_app.mysql.connection.commit()
 
         ID = c.lastrowid
-        data = {"ID": ID, "UUID": uuid_pag, "NUMERO_PAGO": data["NUMERO_PAGO"],
-                "VALOR": data["VALOR"], "METODO":data ["METODO"],
-                "ESTADO": data["ESTADO"], "FECHA": data["FECHA"],
-                "COM_ID": data["COM_ID"]}
+        data = {"ID": ID, "UUID": uuid_pag, "NUMERO_PAGO": data["PAG_NUMERO_PAGO"],
+                "VALOR": data["PAG_VALOR"], "METODO":data ["PAG_METODO"],
+                "ESTADO": data["PAG_ESTADO"], "FECHA": data["PAG_FECHA"],
+                "COM_ID": data["PAG_COM_ID"]}
         return data
 
     def update():
         pass
 
-    def delate():
-        pass
+     # marca la posicion %s
+    def delete(uuid):
+        c = current_app.mysql.connection.cursor()
+        query = "DELETE FROM t_pago WHERE PAG_UUID = %s"
+        c.execute(query,(uuid,))
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return 404
+        c.close()
+        return 200
 
     def read():
         c = current_app.mysql.connection.cursor()
-        query = "SELECT FROM * t_pago"
+        query = "SELECT * FROM t_pago"
         c.execute(query)
         data = c.fetchall()
         print(data)

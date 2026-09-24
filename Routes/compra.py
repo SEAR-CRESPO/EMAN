@@ -1,15 +1,20 @@
 from flask import Blueprint
-from controllers.compraControllers import compraController
+from controllers.compraControllers import compraControllers
 
 compra_bp = Blueprint("compra",__name__)
 
 @compra_bp.route('/', methods= ["get"])
 def home():
-    data = CompraController.read()
+    data = compraControllers.read()
     return data
 
 @compra_bp.route('/', methods= ["post"])
 def add():
-    data = CompraController.create()
+    data = compraControllers.add()
     
-    return 
+    return data
+
+@compra_bp.route('/<uuid>', methods= ["delete"])
+def delete(uuid):
+    data = compraControllers.delete(uuid)
+    return data
