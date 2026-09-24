@@ -139,7 +139,7 @@
     "/persona/{uuid}": {
       "get": {
         "tags": ["Personas"],
-        "summary": "Obtener persona por ID",
+        "summary": "Obtener persona por uuid",
         "description": "Obtiene los datos de una persona específica por su identificador",
         "parameters": [
           {
@@ -221,7 +221,7 @@
       "delete": {
         "tags": ["Personas"],
         "summary": "Eliminar persona",
-        "description": "Elimina una persona del sistema por su UUID",
+        "description": "Elimina una persona del sistema por su uuid",
         "parameters": [
           {
             "name": "uuid",
@@ -685,7 +685,7 @@
     "/tipo_genero/{uuid}": {
       "get": {
         "tags": ["Tipos de Género"],
-        "summary": "Obtener tipo de género por ID",
+        "summary": "Obtener tipo de género por uuid",
         "parameters": [
           {
             "name": "uuid",
@@ -921,7 +921,7 @@
     "/produ_compr/{uuid}": {
       "get": {
         "tags": ["Productos por Compra"],
-        "summary": "Obtener relación producto-compra por ID",
+        "summary": "Obtener relación producto-compra por uuid",
         "parameters": [
           {
             "name": "uuid",
@@ -996,7 +996,7 @@
         }
       }
     },
-    "/carritos": {
+    "/carrito": {
       "get": {
         "tags": ["Carrito de Compras"],
         "summary": "Listar todos los carritos",
@@ -1154,18 +1154,17 @@
         }
       }
     },
-    // ----------------------------------------------------------------------------------------------------------------------------
     "/product_carri/{uuid}": {
       "get": {
         "tags": ["Productos en Carrito"],
-        "summary": "Obtener relación producto-carrito por ID",
+        "summary": "Obtener relación producto-carrito por uuid",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1183,11 +1182,11 @@
         "summary": "Actualizar relación producto-carrito",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1215,11 +1214,11 @@
         "summary": "Eliminar relación producto-carrito",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1233,7 +1232,7 @@
         }
       }
     },
-    "/pagos": {
+    "/pago": {
       "get": {
         "tags": ["Pagos"],
         "summary": "Listar todos los pagos",
@@ -1273,17 +1272,17 @@
         }
       }
     },
-    "/pagos/{id}": {
+    "/pago/{uuid}": {
       "get": {
         "tags": ["Pagos"],
-        "summary": "Obtener pago por ID",
+        "summary": "Obtener pago por uuid",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1301,11 +1300,11 @@
         "summary": "Actualizar pago",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1333,11 +1332,11 @@
         "summary": "Eliminar pago",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1351,7 +1350,7 @@
         }
       }
     },
-    "/domicilios": {
+    "/domicilio": {
       "get": {
         "tags": ["Domicilios"],
         "summary": "Listar todos los domicilios",
@@ -1379,7 +1378,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DomicilioCreate"
+                "$ref": "#/components/schemas/domicilio"
               }
             }
           }
@@ -1391,17 +1390,17 @@
         }
       }
     },
-    "/domicilios/{id}": {
+    "/domicilio/{uuid}": {
       "get": {
         "tags": ["Domicilios"],
-        "summary": "Obtener domicilio por ID",
+        "summary": "Obtener domicilio por uuid",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1419,11 +1418,11 @@
         "summary": "Actualizar domicilio",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1451,11 +1450,11 @@
         "summary": "Eliminar domicilio",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1469,7 +1468,7 @@
         }
       }
     },
-    "/ubicaciones": {
+    "/ubicacion": {
       "get": {
         "tags": ["Ubicaciones"],
         "summary": "Listar todas las ubicaciones",
@@ -1481,7 +1480,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Ubicacion"
+                    "$ref": "#/components/schemas/ubicacion"
                   }
                 }
               }
@@ -1497,7 +1496,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UbicacionCreate"
+                "$ref": "#/components/schemas/ubicacionCreate"
               }
             }
           }
@@ -1509,17 +1508,17 @@
         }
       }
     },
-    "/ubicaciones/{id}": {
+    "/ubicacion/{uuid}": {
       "get": {
         "tags": ["Ubicaciones"],
-        "summary": "Obtener ubicación por ID",
+        "summary": "Obtener ubicación por uuid",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1541,7 +1540,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1569,11 +1568,11 @@
         "summary": "Eliminar ubicación",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1587,7 +1586,7 @@
         }
       }
     },
-    "/contactos-persona": {
+    "/per_contacto": {
       "get": {
         "tags": ["Contactos de Persona"],
         "summary": "Listar contactos de personas",
@@ -1627,17 +1626,17 @@
         }
       }
     },
-    "/contactos-persona/{id}": {
+    "/per_contacto/{uuid}": {
       "get": {
         "tags": ["Contactos de Persona"],
-        "summary": "Obtener contacto por ID",
+        "summary": "Obtener contacto por uuid",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1655,11 +1654,11 @@
         "summary": "Actualizar contacto",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1687,11 +1686,11 @@
         "summary": "Eliminar contacto",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1705,7 +1704,7 @@
         }
       }
     },
-    "/contactos-domicilio": {
+    "/dom_contacto": {
       "get": {
         "tags": ["Contactos de Domicilio"],
         "summary": "Listar contactos de domicilios",
@@ -1745,17 +1744,17 @@
         }
       }
     },
-    "/contactos-domicilio/{id}": {
+    "/dom_contacto/{uuid}": {
       "get": {
         "tags": ["Contactos de Domicilio"],
         "summary": "Obtener contacto de domicilio por ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1773,11 +1772,11 @@
         "summary": "Actualizar contacto de domicilio",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -1805,11 +1804,11 @@
         "summary": "Eliminar contacto de domicilio",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
