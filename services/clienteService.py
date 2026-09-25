@@ -19,8 +19,23 @@ class clienteService:
         data = {"ID": ID, "UUID": uuid_cli, "PER_ID": data["CLI_PER_ID"]}
         return data
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_cliente
+            SET cli_uuid = %s, cli_per_id = %s
+            WHERE cli_uuid = %s"""
+            c.execute(query, (Info["CLI_UUID"], Info["CLI_PER_ID"], Info["CLI_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["CLI_UUID"], "PER_ID": Info["CLI_PER_ID"]}
+            print(data)
+            return data 
     
 
      # marca la posicion %s

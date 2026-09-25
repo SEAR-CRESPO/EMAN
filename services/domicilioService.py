@@ -20,6 +20,24 @@ class domicilioService:
                 "COM_ID": data["DOM_COM_ID"]}
         return data
 
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_domicilio
+            SET dom_uuid = %s, dom_codigo = %s, dom_con_id = %s
+            WHERE dom_uuid = %s"""
+            c.execute(query, (Info["DOM_UUID"], Info["DOM_CODIGO"], Info["DOM_COM_ID"], Info["DOM_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["DOM_UUID"], "CODIGO": Info["DOM_CODIGO"], "COM_ID": Info["DOM_COM_ID"]}
+            print(data)
+            return data 
+
      # marca la posicion %s
     def delete(uuid):
         c = current_app.mysql.connection.cursor()

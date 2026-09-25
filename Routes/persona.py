@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = personaControllers.delete(uuid)
     return data
+
+@persona_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):   
+    data = personaControllers.update(uuid)
+    return data

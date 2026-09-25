@@ -33,8 +33,23 @@ class carrito_compraService:
         return 200
         
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_carrito_compra
+            SET comc_uuid = %s, comc_codigo = %s, comc_total_compra = %s, comc_fecha = %s
+            WHERE comc_uuid = %s"""
+            c.execute(query, (Info["COMC_UUID"], Info["COMC_CODIGO"], Info["COMC_TOTAL_COMPRA"], Info["COMC_FECHA"], Info["COMC_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["COMC_UUID"], "CODIGO": Info["COMC_CODIGO"], "TOTAL_COMPRA": Info["COMC_TOTAL_COMPRA"], "FECHA": Info["COMC_FECHA"]}
+            print(data)
+            return data 
 
     def read():
         c = current_app.mysql.connection.cursor()

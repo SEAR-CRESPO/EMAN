@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = compraControllers.delete(uuid)
     return data
+
+@compra_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = compraControllers.update(uuid)
+    return data

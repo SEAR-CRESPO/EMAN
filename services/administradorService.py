@@ -33,8 +33,23 @@ class administradorService:
         return 200
     
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_administrador
+            SET admi_uuid = %s, adm_per_id = %s
+            WHERE admi_uuid = %s"""
+            c.execute(query, (Info["ADM_UUID"], Info["ADM_PER_ID"], Info["ADM_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["ADM_UUID"], "PER_ID": Info["ADM_PER_ID"]}
+            print(data)
+            return data 
 
     def read():
         c = current_app.mysql.connection.cursor()

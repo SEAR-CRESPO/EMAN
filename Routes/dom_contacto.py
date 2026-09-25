@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = dom_contactoControllers.delete(uuid)
     return data
+
+@dom_contacto_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = dom_contactoControllers.update(uuid)
+    return data

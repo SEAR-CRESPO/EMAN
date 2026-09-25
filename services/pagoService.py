@@ -22,8 +22,23 @@ class pagoService:
                 "COM_ID": data["PAG_COM_ID"]}
         return data
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_pago
+            SET pag_uuid = %s, pag_numero_pago = %s, pag_valor = %s
+            WHERE pag_uuid = %s"""
+            c.execute(query, (Info["PAG_UUID"], Info["PAG_NUMERO_PAGO"], Info["PAG_VALOR"], Info["PAG_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["PAG_UUID"], "NUMERO_PAGO": Info["PAG_NUMERO_PAGO"], "VALOR": Info["PAG_VALOR"]}
+            print(data)
+            return data 
 
      # marca la posicion %s
     def delete(uuid):

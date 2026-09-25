@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = clienteControllers.delete(uuid)
     return data
+
+@cliente_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = clienteControllers.update(uuid)
+    return data

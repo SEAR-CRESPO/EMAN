@@ -19,3 +19,9 @@ def add():
 def delete(uuid):
     data = tipo_generoControllers.delete(uuid)
     return data
+
+
+@tipo_genero_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = tipo_generoControllers.update(uuid)
+    return data

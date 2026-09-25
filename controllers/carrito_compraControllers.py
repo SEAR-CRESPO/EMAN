@@ -28,3 +28,24 @@ class carrito_compraControllers:
             return jsonify({"Mensaje":"No se encontro el registro"}), x
         else:
             return jsonify({"Mensaje":"Se elimino correctamente"}), x
+
+    def update(uuid):
+        data = request.get_json(silent=True)
+        if not data:
+             return jsonify({"mensaje": "El cuerpo esta vacio o es invalido"}), 400
+    
+        required = ["COMC_UUID", "COMC_CODIGO", "COMC_TOTAL_COMPRA", "COMC_FECHA"]
+    
+        missed = [x for x in required if x not in data]
+    
+        if len(missed) > 0:
+            return jsonify({"mensaje": f"Faltan datos parametros: {missed}"}), 400
+    
+        data["uuid"] = uuid
+        print(data)
+        x = carrito_compraService.update(data)
+        if x["codigo_respuesta"] == 1:
+             return jsonify({"mensaje": "recurso no encontrado"}), 400
+        else:
+             return jsonify(x), 200
+            

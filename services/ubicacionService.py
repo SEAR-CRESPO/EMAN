@@ -21,8 +21,23 @@ class ubicacionService:
                 "DOM_ID": data["UBI_DOM_ID"] }
         return data
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_ubicacion
+            SET ubi_uuid = %s, ubi_ciudad = %s, ubi_barrio = %s, ubi_direccion = %s, ubi_dom_id = %s
+            WHERE ubi_uuid = %s"""
+            c.execute(query, (Info["UBI_UUID"], Info["UBI_CIUDAD"], Info["UBI_BARRIO"], Info["UBI_DIRECCION"], Info["UBI_DOM_ID"], Info["UBI_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["UBI_UUID"], "CIUDAD": Info["UBI_CIUDAD"], "BARRIO": Info["UBI_BARRIO"], "DIRECCION": Info["UBI_DIRECCION"], "DOM_ID": Info["UBI_DOM_ID"]}
+            print(data)
+            return data 
 
     # marca la posicion %s
     def delete(uuid):

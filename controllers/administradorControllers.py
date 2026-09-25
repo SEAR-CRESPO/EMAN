@@ -24,8 +24,22 @@ class administradorControllers:
 
     
     def delete(uuid):
-        x = administradorService.delate(uuid)
-        if x == 404:
-            return jsonify({"Mensaje":"No se encontro el registro"}), x
+        data = request.get_json(silent=True)
+        if not data:
+            return jsonify({"mensaje": "El cuerpo esta vacio o es invalido"}), 400
+
+        required = ["ADM_UUID"]
+
+        missed = [x for x in required if x not in data]
+
+        if len(missed) > 0:
+            return jsonify({"mensaje": f"Faltan datos parametros: {missed}"}), 400
+
+        data["uuid"] = uuid
+        print(data)
+        x = administradorService.update(data)
+        if x["codigo_respuesta"] == 1:
+            return jsonify({"mensaje": "recurso no encontrado"}), 400
         else:
-            return jsonify({"Mensaje":"Se elimino correctamente"}), x
+            return jsonify(x), 200
+        

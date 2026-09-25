@@ -22,8 +22,23 @@ class productoService:
                 "COLOR": data["PRO_COLOR"],"PRECIO": data["PRO_PRECIO"]}
         return data
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_producto
+            SET pro_uuid = %s, pro_codigo = %s, pro_nombre = %s, pro_talla = %s, pro_marca = %s, pro_descripcion = %s, pro_color = %s, pro_precio = %s
+            WHERE pro_uuid = %s"""
+            c.execute(query, (Info["PRO_UUID"], Info["PRO_CODIGO"], Info["PRO_NOMBRE"], Info["PRO_TALLA"], Info["PRO_MARCA"], Info["PRO_DESCRIPCION"], Info["PRO_COLOR"], Info["PRO_PRECIO"], Info["PRO_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["CON_UUID"], "TIPO_CONTACTO": Info["CON_TIPO_CONTACTO"], "VALOR": Info["CON_VALOR"]}
+            print(data)
+            return data 
 
     # marca la posicion %s
     def delete(uuid):

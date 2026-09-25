@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = ubicacionControllers.delete(uuid)
     return data
+
+@ubicacion_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):   
+    data = ubicacionControllers.update(uuid)
+    return data

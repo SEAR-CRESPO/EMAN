@@ -1,4 +1,5 @@
 from flask import jsonify, request 
+from services import carrito_compraService
 from services.ubicacionService import ubicacionService
 
 class ubicacionControllers:
@@ -28,3 +29,24 @@ class ubicacionControllers:
             return jsonify({"Mensaje":"No se encontro el registro"}), x
         else:
             return jsonify({"Mensaje":"Se elimino correctamente"}), x
+
+    
+    def update(uuid):
+        data = request.get_json(silent=True)
+        if not data:
+             return jsonify({"mensaje": "El cuerpo esta vacio o es invalido"}), 400
+    
+        required = ["UBI_ID", "UBI_UUID", "UBI_CIUDAD", "UBI_BARRIO", "UBI_DIRECCION", "UBI_DOM_ID"]
+    
+        missed = [x for x in required if x not in data]
+    
+        if len(missed) > 0:
+            return jsonify({"mensaje": f"Faltan datos parametros: {missed}"}), 400
+    
+        data["uuid"] = uuid
+        print(data)
+        x = ubicacionService.update(data)
+        if x["codigo_respuesta"] == 1:
+             return jsonify({"mensaje": "recurso no encontrado"}), 400
+        else:
+             return jsonify(x), 200

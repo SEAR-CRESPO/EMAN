@@ -1536,7 +1536,7 @@
         "summary": "Actualizar ubicación",
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
             "required": true,
             "schema": {
@@ -1950,7 +1950,7 @@
             "example": "550e8400-e29b-41d4-a716-446655440002"
           },
           "ADM_PER_ID": {
-            "type": "integer",
+            "type": "string",
             "description": "ID de la persona asociada al administrador",
             "example": 2
           }
@@ -1961,8 +1961,8 @@
         "type": "object",
         "properties": {
           "ADM_PER_ID": {
-            "type": "integer",
-            "example": 2
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440002"
           }
         },
         "required": ["ADM_PER_ID"]
@@ -1972,7 +1972,7 @@
         "description": "Modelo que representa un producto del catálogo",
         "properties": {
           "PRO_ID": {
-            "type": "integer",
+            "type": "string",
             "description": "Identificador único del producto",
             "example": 1
           },
@@ -2060,9 +2060,9 @@
         "description": "Modelo que representa el tipo/género de un producto",
         "properties": {
           "GEN_ID": {
-            "type": "integer",
+            "type": "string",
             "description": "Identificador único del género",
-            "example": 1
+            "example": "550e8400-e29b-41d4-a716-446655440003"
           },
           "GEN_UUID": {
             "type": "string",
@@ -2075,9 +2075,9 @@
             "example": "Hombre"
           },
           "GEN_PRO_ID": {
-            "type": "integer",
-            "description": "ID del producto asociado",
-            "example": 1
+            "type": "string",
+            "description": "UUID del producto asociado",
+            "example": "550e8400-e29b-41d4-a716-446655440005"
           }
         },
         "required": ["GEN_ID", "GEN_UUID", "GEN_GENERO", "GEN_PRO_ID"]
@@ -2090,8 +2090,8 @@
             "example": "Hombre"
           },
           "GEN_PRO_ID": {
-            "type": "integer",
-            "example": 1
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440005"
           }
         },
         "required": ["GEN_GENERO", "GEN_PRO_ID"]
@@ -2156,12 +2156,12 @@
             "example": "2024-01-15T10:30:00Z"
           },
           "COM_ADM_ID": {
-            "type": "integer",
-            "example": 1
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440005"
           },
           "COM_CLI_ID": {
-            "type": "integer",
-            "example": 1
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440005" 
           }
         },
         "required": ["COM_NUMERO_COMPRA", "COM_FECHA_COMPRA", "COM_CLI_ID"]

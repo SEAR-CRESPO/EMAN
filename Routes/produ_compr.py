@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = produ_comprControllers.delete(uuid)
     return data
+
+@produ_compr_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):   
+    data = produ_comprControllers.update(uuid)
+    return data

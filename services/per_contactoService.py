@@ -20,14 +20,30 @@ class per_contactoService:
                 "VALOR": data["CON_VALOR"], "PER_ID":data ["CON_PER_ID"]}
         return data
 
-    def update():
-        pass
+    def update(Info):
+        c = current_app.mysql.connection.cursor()
+        query = """
+        UPDATE t_per_contacto
+        SET con_uuid = %s, con_tipo_contacto = %s, con_valor = %s
+        WHERE con_uuid = %s"""
+        c.execute(query, (Info["CON_UUID"], Info["CON_TIPO_CONTACTO"], Info["CON_VALOR"], Info["CON_UUID"]))
 
-     # marca la posicion %s
+        current_app.mysql.connection.commit()
+        if c.rowcount == 0:
+            c.close()
+            return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+
+        c.close()
+        data = {"UUID": Info["CON_UUID"], "TIPO_CONTACTO": Info["CON_TIPO_CONTACTO"], "VALOR": Info["CON_VALOR"]}
+        print(data)
+        return data 
+       
+
     def delete(uuid):
         c = current_app.mysql.connection.cursor()
         query = "DELETE FROM t_per_contacto WHERE CON_UUID = %s"
         c.execute(query,(uuid,))
+
         current_app.mysql.connection.commit()
         if c.rowcount == 0:
             c.close()

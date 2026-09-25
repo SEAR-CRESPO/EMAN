@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from services import dom_contactoService
 from services.dom_contactoService import dom_contatoService
 
 class dom_contactoControllers:
@@ -30,3 +31,24 @@ class dom_contactoControllers:
             return jsonify({"Mensaje":"No se encontro el registro"}), x
         else:
             return jsonify({"Mensaje":"Se elimino correctamente"}), x
+
+    
+    def update(uuid):
+        data = request.get_json(silent=True)
+        if not data:
+             return jsonify({"mensaje": "El cuerpo esta vacio o es invalido"}), 400
+    
+        required = ["CON_UUID", "CON_TIPO_CONTACTO", "CON_VALOR", "CON_DOM_ID"]
+    
+        missed = [x for x in required if x not in data]
+    
+        if len(missed) > 0:
+            return jsonify({"mensaje": f"Faltan datos parametros: {missed}"}), 400
+    
+        data["uuid"] = uuid
+        print(data)
+        x = dom_contactoService.update(data)
+        if x["codigo_respuesta"] == 1:
+             return jsonify({"mensaje": "recurso no encontrado"}), 400
+        else:
+             return jsonify(x), 200

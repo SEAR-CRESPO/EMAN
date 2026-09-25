@@ -20,8 +20,23 @@ class tipo_generoService:
                 "PRO_ID": data["GENPRO_ID"]}
         return data
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_tipo_genero
+            SET gen_uuid = %s, gen_genero = %s, gen_pro_id = %s
+            WHERE gen_uuid = %s"""
+            c.execute(query, (Info["GEN_UUID"], Info["GEN_GENERO"], Info["GEN_PRO_ID"], Info["GEN_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["GEN_UUID"], "GENERO": Info["GEN_GENERO"], "PRO_ID": Info["GEN_PRO_ID"]}
+            print(data)
+            return data 
 
     # marca la posicion %s
     def delete(uuid):

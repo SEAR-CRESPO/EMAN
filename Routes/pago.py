@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = pagoControllers.delete(uuid)
     return data
+
+@pago_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):   
+    data = pagoControllers.update(uuid)
+    return data

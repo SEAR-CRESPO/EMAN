@@ -17,3 +17,8 @@ def add():
 def delete(uuid):
     data = administradorControllers.delete(uuid)
     return data
+
+@administrador_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = administradorControllers.update(uuid)
+    return data

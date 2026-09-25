@@ -18,3 +18,8 @@ def add():
 def delete(uuid):
     data = carrito_compraControllers.delete(uuid)
     return data
+
+@carrito_compra_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = carrito_compraControllers.update(uuid)
+    return data

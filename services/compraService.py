@@ -22,8 +22,23 @@ class compraService:
                 "ADM_ID": data["COM_ADM_ID"], "COM_CLI_ID": data["COM_CLI_ID"]}
         return data
 
-    def update():
-        pass
+    def update(Info):
+            c = current_app.mysql.connection.cursor()
+            query = """
+            UPDATE t_compra
+            SET com_uuid = %s, com_numero_compra = %s, com_metodo_entrega = %s, com_fecha_compra = %s, com_adm_id = %s, com_cli_id = %s
+            WHERE com_uuid = %s"""
+            c.execute(query, (Info["COM_UUID"], Info["COM_NUMERO_COMPRA"], Info["COM_METODO_ENTREGA"], Info["COM_FECHA_COMPRA"], Info["COM_ADM_ID"], Info["COM_CLI_ID"], Info["COM_UUID"]))
+
+            current_app.mysql.connection.commit()
+            if c.rowcount == 0:
+                c.close()
+                return {"mensaje": "no se encotro ese recurso o no se modifican datos"}
+    
+            c.close()
+            data = {"UUID": Info["COM_UUID"], "NUMERO_COMPRA": Info["COM_NUMERO_COMPRA"], "METODO_ENTREGA": Info["COM_METODO_ENTREGA"], "FECHA_COMPRA": Info["COM_FECHA_COMPRA"], "ADM_ID": Info["COM_ADM_ID"], "CLI_ID": Info["COM_CLI_ID"]}
+            print(data)
+            return data 
 
      # marca la posicion %s
     def delete(uuid):

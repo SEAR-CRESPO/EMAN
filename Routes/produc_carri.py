@@ -19,3 +19,9 @@ def add():
 def delete(uuid):
     data = produc_carriControllers.delete(uuid)
     return data
+
+
+@produc_carri_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):   
+    data = produc_carriControllers.update(uuid)
+    return data

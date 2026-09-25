@@ -18,3 +18,9 @@ def add():
 def delete(uuid):
     data = domicilioControllers.delete(uuid)
     return data
+
+
+@domicilio_bp.route('/<uuid>', methods= ["put"])
+def update(uuid):
+    data = domicilioControllers.update(uuid)
+    return data
